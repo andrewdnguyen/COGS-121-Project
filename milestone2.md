@@ -12,10 +12,12 @@
 ![](/prototypes/p1Login.png)
 ![](/prototypes/p1Profile.png)
 ![](/prototypes/p1Choose.png)
+![](/prototypes/p1ConfirmSelected.png)
 ![](/prototypes/p1Questions.png)
 ![](/prototypes/p1Feedback.png)
 ![](/prototypes/p1Report.png)
 ![](/prototypes/p1Results.png)
+![](/prototypes/p1SuggestImprovements.png)
 
 # Prototype 2
 ## Based on Storyboard 2. The user first picks a game that the files will be coming from. User uploads an audio recording and/or chat log of a game. These files are run through an NLP API to test for emotions, which then evaluates the user for toxicity and shows the user's percentile of toxicity compared to others.
