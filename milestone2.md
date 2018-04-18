@@ -10,6 +10,17 @@
 ## Based on Storyboard 1. User takes a quiz on what phrases the user thinks is toxic or just banter. The user first picks a game that they usually play. Based on their choices, the app gives a toxicity score and compares it to the user's perception of his or her toxic behavior.
 
 <![](/prototypes/gameformatics prototype 1 login.png)
+<![](/prototypes/gameformatics prototype 1 profile.png)
+<![](/prototypes/gameformatics prototype 1 choose.png)
+<![](/prototypes/gameformatics prototype 1 questions.png)
+<![](/prototypes/gameformatics prototype 1 feedback.png)
+<![](/prototypes/gameformatics prototype 1 report.png)
+<![](/prototypes/gameformatics prototype 1 results.png)
 
 # Prototype 2
 ## Based on Storyboard 2. The user first picks a game that the files will be coming from. User uploads an audio recording and/or chat log of a game. These files are run through an NLP API to test for emotions, which then evaluates the user for toxicity and shows the user's percentile of toxicity compared to others.
+
+<![](/prototypes/gameformatics prototype 2 login.png)
+<![](/prototypes/gameformatics prototype 2 upload.png)
+<![](/prototypes/gameformatics prototype 2 report.png)
+<![](/prototypes/gameformatics prototype 2 history.png)
