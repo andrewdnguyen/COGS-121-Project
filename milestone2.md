@@ -1,7 +1,7 @@
 # Storyboard 1
 ## A player believes he is only speaking banter, so he uses an app that objectively evaluates both his toxicity and his perception of himself.
 ![](/prototype-storyboard/Storyboard1.jpg)
-![](/prototype-storyboard/Storyboard 1.jpg)
+![](/prototype-storyboard/Storyboard 1.png)
 
 # Storyboard 2
 ## A player is accussed of being toxic (mean/salty/rude in gamespeak) and sets out to prove his friend wrong. He uploads an audio recording of himself and a chat log of the game (either/or is fine) to our app. The app then processes the language with a natural language processing API and evaluates the player's toxicity level in comparison to the app's scale and to others.
