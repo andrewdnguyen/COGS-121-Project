@@ -9,7 +9,7 @@
 # Prototype 1
 ## Based on Storyboard 1. User takes a quiz on what phrases the user thinks is toxic or just banter. The user first picks a game that they usually play. Based on their choices, the app gives a toxicity score and compares it to the user's perception of his or her toxic behavior.
 
-<![](/prototypes/gameformatics-prototype-1-login.png)
+<![](/prototypes/p1Choose.png)
 <![](/prototypes/gameformatics prototype 1 profile.png)
 <![](/prototypes/gameformatics prototype 1 choose.png)
 <![](/prototypes/gameformatics prototype 1 questions.png)
