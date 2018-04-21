@@ -12,8 +12,6 @@
 const express = require('express');
 const app = express();
 
-const index = require('./static_files/index.html');
-
 // put all of your static files (e.g., HTML, CSS, JS, JPG) in the static_files/
 
 app.use(express.static('static_files'));
