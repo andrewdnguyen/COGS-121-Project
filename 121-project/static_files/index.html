@@ -9,14 +9,14 @@
         Replace this with the actual home page that you want to load.
         Here is the new page <a href="page2.html">TADAA</a>
     </p>
-    <p>Testing button for backend data retrieval.</p>
-    <button>Click me!</button>
+    <p>Start the quiz to determine your toxicity level relative to your responses.</p>
+    <p class="quoteNum"></p>
+    <p class="quizQs"></p>
+    <button id="startQuiz">Click me!</button>
+    <button id="prevQ">Previous Question</button>
+    <button id="nextQ">Next Question</button>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
 </script>
-<!--<script src="../server.js">
-    $(document).ready(() => {
-        console.log("Main page loaded.");
-    });
-</script>-->
+<script type="application/javascript" src="js_files/quizQuestions.js"></script>
 </html>
