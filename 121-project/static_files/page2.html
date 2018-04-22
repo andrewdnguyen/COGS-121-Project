@@ -25,12 +25,12 @@ $(document).ready(() => {
             $('#status').html('Successfully fetched data at URL: ' + requestURL);
             $('#number').html('Question Number: ' + data.number);
             $('#question').html('This question is about: ' + data.content);
-            } else {
+        } else {
               $('#status').html('Error: could not find user at URL: ' + requestURL);
               // clear the display
               $('#jobDiv').html('');
-}
-      },
+        }
+      }
     });
   });
   // define a generic Ajax error handler:
