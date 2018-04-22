@@ -4,10 +4,8 @@
 // which will look in package.json and install all dependencies
 // (e.g., express)
 //
-// To start the server, run:
-//   node server.js
-//
-// and open the frontend webpage at http://localhost:3000/
+// To start the server, run node server.js in Git Bash
+// and open the frontend webpage at http://localhost:3000/index.html/
 
 const express = require('express');
 const app = express();
