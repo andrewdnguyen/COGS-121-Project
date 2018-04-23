@@ -2,15 +2,56 @@
 <html>
 <head>
     <title>Profile</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
-    <h1>Profile</h1>
-    <p>Input all your information, which will save here</p>
-    <p>To see your behavioral trend over time, click <a href="trend.html">here.</a></p>
-    <p>To return to the home page, press here: <a href="home.html">HOME</a></p>
+    <h1>My Profile</h1>
+    <img src="profile.png" width="40" height="auto">
+    <h2>Noxious Nate</h2>
+    <ul>
+        <li>Toxiscore: 89.3 (89th percentile)</li>
+        <li>Previous Toxiscore: 95.0</li>
+        <li>Sensitivity: 3.2 (16th percentile)</li>
+        <li>Previous Sensitivity: 3.6</li>
+        <li>IGN: NoxNate (LoL), NephariousNate (Fortnite)</li>
+    </ul>
+    <button onclick="edit()">Edit</button>
+    <form id="profileEdit">
+        First name:<br>
+        <input type="text" name="firstname" value="Noxious">
+        <br>
+        Last name:<br>
+        <input type="text" name="lastname" value="Nate">
+        <br><br>
+        League of Legends IGN:<br>
+        <input type="text" name="ignLol" value="NoxNate">
+        <br>
+        Fortnite IGN:<br>
+        <input type="text" name="ignFortnite" value="NephariousNate">
+        <br>
+        Overwatch IGN:<br>
+        <input type="text" name="ignOW" value="">
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+    <br><br>
+    <button><a href="trend.html">Report History and Behavioral Trend</a></button>
+    <br><br>
+    <button><a href="home.html">Home</a></button>
     <button><a href="index.html">Logout</a></button>
-</body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
-</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="application/javascript" src="js_files/quizQuestions.js"></script>
+<script>
+    function edit() {
+        var profileForm = document.getElementById("profileEdit");
+        if (profileForm.style.display === "none") {
+            profileForm.style.display = "block";
+        } else {
+            profileForm.style.display = "none";
+        }
+    }
+</script>
+
+</body>
 </html>
