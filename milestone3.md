@@ -5,18 +5,18 @@
 
 # HTML Skeleton Screenshots
 
-![](/skeleton-images/skeleton1.png)
+![](/skeleton-images/skeleton1.PNG)
 
-![](/skeleton-images/skeleton2.png)
+![](/skeleton-images/skeleton2.PNG)
 
-![](/skeleton-images/skeleton3.png)
+![](/skeleton-images/skeleton3.PNG)
 
-![](/skeleton-images/skeleton4.png)
+![](/skeleton-images/skeleton4.PNG)
 
-![](/skeleton-images/skeleton5.png)
+![](/skeleton-images/skeleton5.PNG)
 
-![](/skeleton-images/skeleton6.png)
+![](/skeleton-images/skeleton6.PNG)
 
-![](/skeleton-images/skeleton7.png)
+![](/skeleton-images/skeleton7.PNG)
 
-![](/skeleton-images/skeleton8.png)
+![](/skeleton-images/skeleton8.PNG)
