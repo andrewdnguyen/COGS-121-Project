@@ -5,10 +5,12 @@ $(document).ready(() => {
     let topic = $('#topic');
     let prevQuotes = $('#prevQ');
     let nextQuotes = $('#nextQ');
+    let answer = $('#answer');
     let number = 1;
     topic.hide();
     prevQuotes.hide();
     nextQuotes.hide();
+    answer.hide();
     $('#startQuiz').click(toggleQuiz);
     $('#prevQ').click(() => {
         if (number > 1){
@@ -35,6 +37,7 @@ function toggleQuiz(){
     let quote = $('.quote');
     let prevQuotes = $('#prevQ');
     let nextQuotes = $('#nextQ');
+    let answer = $('#answer');
     let number = 1;
     quizButton.text(quizButton.text()== 'Click to start the quiz!' ? 'Quit quiz and hide quotes.' : 'Click to start the quiz!');
     if (quizQuotes.text() != "") {
@@ -43,6 +46,7 @@ function toggleQuiz(){
         quote.hide();
         prevQuotes.hide();
         nextQuotes.hide();
+        answer.hide();
         number = 1;
         console.log('Quitted quiz.');
     } else {
@@ -52,6 +56,7 @@ function toggleQuiz(){
         quote.show();
         prevQuotes.show();
         nextQuotes.show();
+        answer.show()
         console.log('Started quiz.');
       }
 }
