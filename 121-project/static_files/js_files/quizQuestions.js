@@ -19,46 +19,14 @@ $(document).ready(() => {
         } else {
             console.log('No previous quote!');
         }
-
     });
-
-
     $('#nextQ').click(() => {
         number++;
         randQuote();
         console.log('Next quote!');
     });
-    /*$('#startQuiz').click(() => {
-      quizButton.text(quizButton.text()== 'Click me!' ? 'Quit quiz and hide quotes.' : 'Click me!');
-      if (quizQuotes.text() != "") {
-          quizQuotes.empty();
-          prevQuotes.hide();
-          nextQuotes.hide();
-          number = 1;
-          console.log('Quitted quiz.');
-      } else {
-          $('#startQuiz').change(randQuote);
-          quizQuotes.text("Quote #" + number);
-        }
-    });
-    $('#prevQ').click(() => {
-        if (number > 1){
-            number--;
-            quizQuotes.text('Quote #' + number);
-            console.log('Previous quote!');
-            $('#prevQ').change(randQuote);
-        } else {
-            console.log('No previous quote!');
-            $('#prevQ').change(randQuote);
-        }
-    });
-    $('#nextQ').click(() => {
-        number++;
-        quizQuotes.text('Quote #' + number);
-        $('#nextQ').change(randQuote);
-        console.log('Next quote!');
-    });*/
 });
+
 
 function toggleQuiz(){
     let quizButton = $('#startQuiz');
@@ -127,6 +95,16 @@ function randQuote() {
       $('.quote').html('Error: unknown ajaxError!');
     });
 }
+
+function showPassword() {
+    var password = document.getElementById("passInput");
+    if (password.type === "password") {
+        password.type = "text";
+    } else {
+        password.type = "password";
+    }
+}
+
 /*$(document).ready(() => {
   $('#startQuiz').click(() => {
       let quizQuotess = $('.quizQs');
@@ -141,3 +119,35 @@ function randQuote() {
   });
 });
 */
+
+/*Discarded code for quiz buttons.*/
+/*$('#startQuiz').click(() => {
+  quizButton.text(quizButton.text()== 'Click me!' ? 'Quit quiz and hide quotes.' : 'Click me!');
+  if (quizQuotes.text() != "") {
+      quizQuotes.empty();
+      prevQuotes.hide();
+      nextQuotes.hide();
+      number = 1;
+      console.log('Quitted quiz.');
+  } else {
+      $('#startQuiz').change(randQuote);
+      quizQuotes.text("Quote #" + number);
+    }
+});
+$('#prevQ').click(() => {
+    if (number > 1){
+        number--;
+        quizQuotes.text('Quote #' + number);
+        console.log('Previous quote!');
+        $('#prevQ').change(randQuote);
+    } else {
+        console.log('No previous quote!');
+        $('#prevQ').change(randQuote);
+    }
+});
+$('#nextQ').click(() => {
+    number++;
+    quizQuotes.text('Quote #' + number);
+    $('#nextQ').change(randQuote);
+    console.log('Next quote!');
+});*/
