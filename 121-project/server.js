@@ -23,16 +23,16 @@ app.use(express.static('static_files'));
 
 const quotes =
 {
-  "1": {number: "1", content: "You are a trash jungler."},
-  "2": {number: "2", content: "Your brain must be a pea."},
-  "3": {number: "3", content: "Lol, just concede piece of garbage."},
-  "4": {number: "4", content: "Hey, just concede with us or I'll report."},
-  "5": {number: "5", content: "OMG, your gank and gameplay suck."},
-  "6": {number: "6", content: "Stop fighting dude."},
-  "7": {number: "7", content: "Get out of my lane!"},
-  "8": {number: "8", content: "Get your CS up."},
-  "9": {number: "9", content: "Use your ult yo."},
-  "10": {number: "10", content: "I'll report and find you irl."}
+  "1": {number: "1", content: "You are a trash jungler.", topic: "Swearing"},
+  "2": {number: "2", content: "Your brain must be a pea.", topic: "Profanity"},
+  "3": {number: "3", content: "Lol, just concede piece of garbage.", topic: "Sarcasm"},
+  "4": {number: "4", content: "Hey, just concede with us or I'll report.", topic: "Emphasis"},
+  "5": {number: "5", content: "OMG, your gank and gameplay suck.", topic: "Anger"},
+  "6": {number: "6", content: "Stop fighting dude.", topic: "Disappointment"},
+  "7": {number: "7", content: "Get out of my lane!", topic: "Sadness"},
+  "8": {number: "8", content: "Get your CS up.", topic: "Sexual"},
+  "9": {number: "9", content: "Use your ult yo.", topic: "Violent"},
+  "10": {number: "10", content: "I'll report and find you irl.", topic: "Threat"}
 };
 
 /*app.get('/quizQ/', (req, res) => {
@@ -53,7 +53,18 @@ app.get('/quizQ/:number', (req, res) => {
   }
 });
 
-const data =
+app.get('/quizQ/:content', (req, res) => {
+  const quoteToLookup = req.params.number; // matches ':number' above
+  const quizData = quotes[quoteToLookup];
+  console.log(quoteToLookup, '->', quizData); // for debugging
+  if (quizData) {
+    res.send(quizData);
+  } else {
+    console.log("Something's gone wrong on retrieving the topic!")
+    res.send({}); // failed, so return an empty object instead of undefined
+  }
+});
+/*const data =
 {
   "1": {number: "1", content: "Swearing"},
   "2": {number: "2", content: "Profanity"},
@@ -77,7 +88,7 @@ app.get('/quiz/:number', (req, res) => {
     console.log("Something's gone wrong!")
     res.send({}); // failed, so return an empty object instead of undefined
   }
-});
+});*/
 
 app.listen(3000, () => {
   console.log('Server started at http://localhost:3000/index.html');

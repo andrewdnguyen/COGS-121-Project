@@ -86,7 +86,7 @@ function randQuote() {
       dataType : 'json', // this URL returns data in JSON format
       success: (quotes) => {
           console.log('Quiz question shown!', quotes);
-          if (quotes.number && quotes.content) {
+          if (quotes.number && quotes.content && quotes.topic) {
             //$('#status').html('Successfully fetched data at URL: ' + requestURL);
             $('.quoteNum').html('Quote: ' + quotes.number);
             $('.quote').html('Read this: ' + quotes.content);
