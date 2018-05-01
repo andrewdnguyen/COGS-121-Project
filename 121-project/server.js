@@ -73,7 +73,7 @@ var params = {
       });
   }));
 */
-
+const object = [];
 //Newer more volatile code
 var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
 var fs = require('fs');
@@ -114,8 +114,9 @@ var params = {
         if (error)
           console.log('Error:', error);
         else
-          var string = (JSON.stringify(job.results[0].results[0].alternatives[0].transcript, null, 2))
+          var string = (JSON.stringify(job.results[0].results[0].alternatives[0].transcript, null, 2));
           console.log(string);
+          object.push(string);
           var fs = require('fs');
           fs.writeFile("test", string, function(err) {
           if(err) {
@@ -135,7 +136,7 @@ var params = {
     });
 
 // put all of your static files (e.g., HTML, CSS, JS, JPG) in the static_files/
-
+console.log(object);
 app.use(express.static('static_files'));
 /*
 {
