@@ -10,6 +10,65 @@
 const express = require('express');
 const app = express();
 
+var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
+var fs = require('fs');
+var speech_to_text = new SpeechToTextV1 ({
+  username: 'c51d6149-2c60-41d7-ae78-4e824772aa0a',
+  password: 'M3auuesFSoXu',
+  headers: {
+  'X-Watson-Learning-Opt-Out': 'true'
+  }
+});
+var files = ['sample.mp3'];
+var params = {
+    content_type: 'audio/mp3',
+    audio: fs.createReadStream('sample.mp3'),
+    'user_token': 'job25',
+    timestamps: true
+  };
+
+  speech_to_text.createJob(params, function(error, job) {
+    if (error)
+      console.log('Error:', error);
+    else
+      console.log('No problems!');
+  });
+
+  let latestJobID = undefined;
+  speech_to_text.checkJobs(null, (latestJobID = function(error, jobs) {
+    if (error)
+      console.log('Error:', error);
+    else
+      //console.log(JSON.stringify(jobs, null, 2));
+      console.log('No problems!')
+      let idVal = jobs.recognitions[0].id;
+      params2 = {};
+      params2['id'] = idVal;
+      console.log(params2);
+      speech_to_text.checkJob(params2, function(error, job) {
+        if (error)
+          console.log('Error:', error);
+        else
+          var string = (JSON.stringify(job.results[0].results[0].alternatives[0].transcript, null, 2))
+          console.log(string);
+          var fs = require('fs');
+          fs.writeFile("test", string, function(err) {
+          if(err) {
+              return console.log(err);
+          }
+          console.log("The file was saved!");
+          speech_to_text.deleteJob(params2, function(error) {
+            if (error)
+              console.log('Error:', error);
+            else {
+              console.log('Job Deleted, if errors should occur please remove deleteJob.')
+            }
+          });
+      });
+      });
+  }));
+
+
 // put all of your static files (e.g., HTML, CSS, JS, JPG) in the static_files/
 
 app.use(express.static('static_files'));
