@@ -88,7 +88,7 @@ var params = {
       'X-Watson-Learning-Opt-Out': 'true'
       }
     });
-    var files = ['audio-file2.flac'];
+    var files = ['audio-file1.flac'];
     for(var file in files) {
     var params = {
         content_type: 'audio/flac',
@@ -120,7 +120,16 @@ var params = {
             else
               var string = (JSON.stringify(job.results[0].results[0].alternatives[0].transcript, null, 2));
               console.log(string);
-              //object.push(string);
+              db.run(
+                'INSERT INTO transcripts VALUES ($transcript)',
+                // parameters to SQL query:
+                {
+                  $transcript: string
+                },
+                db.each("SELECT transcript FROM transcripts", (err, row) => {
+                    console.log("Inserted: " + row.transcript);
+                }));
+
               var fs = require('fs');
               fs.writeFile("test", string, function(err) {
               if(err) {
