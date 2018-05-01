@@ -77,66 +77,67 @@ var params = {
       });
   }));
 */
-//Newer more volatile code... continue development
+
+  //ISSUE: CURRENTLY THE MOST RECENT JOB DISPLAYED IS ONE BEHIND IF ISSUES OCCUR RUN SERVER AGAIN!
   //app.get('/upload', (req, res) => {
-    var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
-    var fs = require('fs');
-    var speech_to_text = new SpeechToTextV1 ({
+    var SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1'); //Import Watson TTS Service
+    var fs = require('fs'); //For writing text to files
+    var speech_to_text = new SpeechToTextV1 ({ //All necessary api verification data
       username: 'c51d6149-2c60-41d7-ae78-4e824772aa0a',
       password: 'M3auuesFSoXu',
       headers: {
       'X-Watson-Learning-Opt-Out': 'true'
       }
     });
-    var files = ['audio-file1.flac'];
-    for(var file in files) {
-    var params = {
-        content_type: 'audio/flac',
-        audio: fs.createReadStream(files[file]),
+    var files = ['audio-file1.flac']; //Audio file to be transcribed
+    for(var file in files) { //For loop in case we ever want to transcribe multiple files
+    var params = { //Data about the audio file
+        content_type: 'audio/flac', //filetype CHANGE TO MP3 if using mp3 files to test
+        audio: fs.createReadStream(files[file]), //Creates a stream to read the mp3 file
         //'user_token': 'job25',
-        timestamps: true
+        timestamps: true //Provides timestamp info
       };
-      speech_to_text.createJob(params, function(error, job) {
+      speech_to_text.createJob(params, function(error, job) { //Creates a job to read the audio file mentioned above
         if (error)
           console.log('Error:', error);
         else
           console.log('No problems!');
       });
     }
-      speech_to_text.checkJobs(null, function(error, jobs) {
+      speech_to_text.checkJobs(null, function(error, jobs) { //Generates the list of all jobs created so far
         if (error)
           console.log('Error:', error);
         else
           console.log('No problems!')
           console.log(JSON.stringify(jobs, null, 2));
-          for(let x = 0; x < jobs.recognitions.length; x++){
-          let idVal = jobs.recognitions[x].id;
+          for(let x = 0; x < jobs.recognitions.length; x++){ //For loop that gets the id of every job listed
+          let idVal = jobs.recognitions[x].id; //Extracts id from specific job info
           let params2 = {};
           params2['id'] = idVal;
           console.log(params2);
-          speech_to_text.checkJob(params2, function(error, job) {
+          speech_to_text.checkJob(params2, function(error, job) { //Usus prior job id to get transcript from job
             if (error)
               console.log('Error:', error);
             else
-              var string = (JSON.stringify(job.results[0].results[0].alternatives[0].transcript, null, 2));
+              var string = (JSON.stringify(job.results[0].results[0].alternatives[0].transcript, null, 2)); //Clean data to only show transcript
               console.log(string);
               db.run(
-                'INSERT INTO transcripts VALUES ($transcript)',
+                'INSERT INTO transcripts VALUES ($transcript)', //Insert transcript into the Transcripts table in data.db
                 // parameters to SQL query:
                 {
                   $transcript: string
                 },
-                db.each("SELECT transcript FROM transcripts", (err, row) => {
+                db.each("SELECT transcript FROM transcripts", (err, row) => { //Prints transcripts table for debugging
                     console.log("Inserted: " + row.transcript);
                 }));
 
-              var fs = require('fs');
-              fs.writeFile("test", string, function(err) {
+              var fs = require('fs'); //fs is used to write transcript to file
+              fs.writeFile("test.txt", string, function(err) {
               if(err) {
                   return console.log(err);
               }
               console.log("The file was saved with: " + string);
-              speech_to_text.deleteJob(params2, function(error) {
+              speech_to_text.deleteJob(params2, function(error) { //Deletes job from list to avoid clutter
                 if (error)
                   console.log('Error:', error);
                 else {
