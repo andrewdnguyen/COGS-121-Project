@@ -10,6 +10,10 @@
 const express = require('express');
 const app = express();
 
+// use this library to interface with SQLite databases: https://github.com/mapbox/node-sqlite3
+const sqlite3 = require('sqlite3');
+const db = new sqlite3.Database('data.db');
+
 /**
   The text transcription code for the server. It takes in the sample.mp3 file
   and transcribes it onto a file labled "test".
@@ -138,14 +142,9 @@ var params = {
 // put all of your static files (e.g., HTML, CSS, JS, JPG) in the static_files/
 console.log(object);
 app.use(express.static('static_files'));
-/*
-{
-  'Philip': {job: 'professor', pet: 'cat.jpg'},
-  'John': {job: 'student',   pet: 'dog.jpg'},
-  'Carol': {job: 'engineer',  pet: 'bear.jpg'}
-};
-*/
 
+/**
+    Deprecated Database
 const quotes =
 {
   "1": {number: "1", content: "You are a trash jungler.", topic: "Swearing"},
@@ -159,28 +158,37 @@ const quotes =
   "9": {number: "9", content: "Use your ult yo.", topic: "Violent"},
   "10": {number: "10", content: "I'll report and find you irl.", topic: "Threat"}
 };
-
+*/
 /*app.get('/quizQ/', (req, res) => {
   const allQuotes = Object.keys(quotes); // returns a list of object keys
   console.log('The quote is:', allQuotes);
   res.send(allQuotes);
 });*/
 
+
 app.get('/quizQ/:number', (req, res) => {
   const quoteToLookup = req.params.number; // matches ':number' above
-  const quizData = quotes[quoteToLookup];
-  console.log(quoteToLookup, '->', quizData); // for debugging
-  if (quizData) {
-    res.send(quizData);
-  } else {
-    console.log("Something's gone wrong on retrieving the quote!")
-    res.send({}); // failed, so return an empty object instead of undefined
-  }
-});
+  db.all(
+   'SELECT * FROM questions_to_contexts WHERE idx=$number',
+   // parameters to SQL query:
+   {
+     $number: quoteToLookup
+   },
+   (err, rows) => {
+     console.log(rows);
+     if (rows.length > 0) {
+       console.log(rows[0]);
+       res.send(rows[0]);
+     } else {
+       res.send({}); // failed, so return an empty object instead of undefined
+     }
+   }
+)});
 
+/**
 app.get('/quizQ/:content', (req, res) => {
   const quoteToLookup = req.params.number; // matches ':number' above
-  const quizData = quotes[quoteToLookup];
+  //const quizData = quotes[quoteToLookup];
   console.log(quoteToLookup, '->', quizData); // for debugging
   if (quizData) {
     res.send(quizData);
@@ -189,6 +197,7 @@ app.get('/quizQ/:content', (req, res) => {
     res.send({}); // failed, so return an empty object instead of undefined
   }
 });
+*/
 /*const data =
 {
   "1": {number: "1", content: "Swearing"},
