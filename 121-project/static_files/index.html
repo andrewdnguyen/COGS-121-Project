@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
+    <link href="https://fonts.googleapis.com/css?family=Averia+Sans+Libre|Nunito" rel="stylesheet">
+    <style type="text/css">
+        @import url("primaryCSS.css");
+    </style>
 </head>
 <body>
     <h1>Welcome to Toxicon*</h1>
@@ -11,7 +17,8 @@
     <br>
     <input type="password" placeholder="Password" id="passInput">
     <br>
-    <input type="checkbox" onclick="showPassword()">Show Password
+    <input type="checkbox" onclick="showPassword()" id="showPass">
+    <label for="showPass">Show Password</label>
     <br>
     <a href="home.html"><button>Login</button></a>
     <button>Make New Account</button>

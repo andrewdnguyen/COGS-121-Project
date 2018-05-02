@@ -2,34 +2,36 @@
 <html>
 <head>
     <title>Profile</title>
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css?family=Averia+Sans+Libre|Nunito" rel="stylesheet">
+    <style type="text/css">
+        @import url("primaryCSS.css");
+    </style>
 </head>
 <body>
     <h1>My Profile</h1>
-    <img src="profile.png" width="40" height="auto">
+    <img src="profile.png" width="80" height="auto">
     <h2>Noxious Nate</h2>
     <ul>
-        <li>Toxiscore: 89.3 (89th percentile)</li>
-        <li>Previous Toxiscore: 95.0</li>
-        <li>Sensitivity: 3.2 (16th percentile)</li>
-        <li>Previous Sensitivity: 3.6</li>
-        <li>IGN: NoxNate (LoL), NephariousNate (Fortnite)</li>
+        <li><b>Toxiscore</b>: 89.3 (89th percentile)</li>
+        <li><b>Previous Toxiscore</b>: 95.0</li>
+        <li><b>Sensitivit</b>y: 3.2 (16th percentile)</li>
+        <li><b>Previous Sensitivity</b>: 3.6</li>
+        <li><b>IGN</b>: NoxNate (LoL), NephariousNate (Fortnite)</li>
     </ul>
     <button onclick="edit()">Edit</button>
     <form id="profileEdit">
-        First name:<br>
+        <p class="editProfile">First name:</p>
         <input type="text" name="firstname" value="Noxious">
-        <br>
-        Last name:<br>
+        <p class="editProfile">Last name:</p>
         <input type="text" name="lastname" value="Nate">
-        <br><br>
-        League of Legends IGN:<br>
+        <p class="editProfile">League of Legends IGN:</p>
         <input type="text" name="ignLol" value="NoxNate">
-        <br>
-        Fortnite IGN:<br>
+        <p class="editProfile">Fortnite IGN:</p>
         <input type="text" name="ignFortnite" value="NephariousNate">
-        <br>
-        Overwatch IGN:<br>
+        <p class="editProfile">Overwatch IGN:</p>
         <input type="text" name="ignOW" value="">
         <br>
         <input type="submit" value="Submit">
