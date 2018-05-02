@@ -20,6 +20,7 @@ db.serialize(() => {
   // create a new database table:
   db.run("CREATE TABLE questions_to_contexts (idx TEXT, number TEXT, content TEXT, topic TEXT)");
   db.run("CREATE TABLE transcripts (transcript TEXT)");
+  db.run("CREATE TABLE words_said_to_text (words TEXT)");
 
   // insert 10 rows of data:
   db.run("INSERT INTO questions_to_contexts VALUES ('1', '1', 'You are a trash jungler.', 'swearing')");

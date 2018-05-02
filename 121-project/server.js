@@ -14,6 +14,9 @@ const app = express();
 const sqlite3 = require('sqlite3');
 const db = new sqlite3.Database('data.db');
 
+// put all of your static files (e.g., HTML, CSS, JS, JPG) in the static_files/
+app.use(express.static('static_files'));
+
 /**
   The text transcription code for the server. It takes in the sample.mp3 file
   and transcribes it onto a file labled "test".
@@ -146,12 +149,88 @@ var params = {
               });
           });
           });
-      }
-        });
-    //});
+        }
+      });
 
-// put all of your static files (e.g., HTML, CSS, JS, JPG) in the static_files/
-app.use(express.static('static_files'));
+app.get('/text', (req, res) => {
+  // db.all() fetches all results from an SQL query into the 'rows' variable:
+  db.all('SELECT words FROM words_said_to_text', (err, rows) => {
+
+    var results;
+
+    console.log(rows);
+    const allWords = rows.map(e => e.words);
+    console.log(allWords);
+
+
+    var NaturalLanguageUnderstandingV1 = require('watson-developer-cloud/natural-language-understanding/v1.js');
+    var natural_language_understanding = new NaturalLanguageUnderstandingV1({
+      'username': '8cbbdded-1f4d-4ea3-b143-13371634a65e',
+      'password': 's8Yll4h8ASYf',
+      'version': '2018-03-16'
+    });
+
+    var parameters = {
+      'text': allWords[0],
+      'features': {
+        'entities': {
+          'emotion': true,
+          'sentiment': true,
+          'limit': 2
+        },
+        'keywords': {
+          'emotion': true,
+          'sentiment': true,
+          'limit': 2
+        }
+      },
+      "language": "en"
+    }
+
+    natural_language_understanding.analyze(parameters, function(err, response) {
+      if (err)
+        console.log('error:', err);
+      else
+        var results = JSON.stringify(response);
+        console.log(JSON.stringify(response, null, 2));
+
+        let text = "";
+        let x;
+        for (x in response) {
+            text += response[x] + " ";
+        }
+
+        res.send(results);
+    });
+  });
+});
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: true})); // hook up with your app
+app.post('/text', (req, res) => {
+  console.log(req.body);
+
+  var results;
+  var wordsToAnalyze;
+
+  db.run(
+    'INSERT INTO words_said_to_text VALUES ($words)',
+    // parameters to SQL query:
+    {
+      $words: req.body.words,
+    },
+    // callback function to run when the query finishes:
+    (err) => {
+      if (err) {
+        res.send({message: 'error in app.post(/text)'});
+      } else {
+        res.send({message: 'successfully run app.post(/text)'});
+      }
+    }
+  );
+
+});
+    //});
 
 /**
     Deprecated Database
