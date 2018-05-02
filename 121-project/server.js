@@ -193,13 +193,6 @@ app.get('/text', (req, res) => {
       else
         var results = JSON.stringify(response);
         console.log(JSON.stringify(response, null, 2));
-
-        let text = "";
-        let x;
-        for (x in response) {
-            text += response[x] + " ";
-        }
-
         res.send(results);
     });
   });

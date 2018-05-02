@@ -12,7 +12,26 @@
                   dataType : 'json',
                   success: (data) => {
                     console.log('You received some data!', data);
-                    $('#results').html('All words: ' + data);
+                    for(let key in data.keywords[0]){
+                          $('#results').append('<div class="key"><h1>' + key +'</h1></div>');
+                          if(key == "text"){
+                            $('#results').append('<div class="data"><h4>' + data.keywords[0].text +'</h4></div>');
+                          }
+                          if(key == "relevance"){
+                            $('#results').append('<div class="data"><h4>' + data.keywords[0].relevance +'</h4></div>');
+                          }
+                          if(key == "sentiment"){
+                            $('#results').append('<div class="data"><h4>' + 'Score: ' + data.keywords[0].sentiment.score +'</h4></div>');
+                              $('#results').append('<div class="data"><h4>' + 'Label: ' + data.keywords[0].sentiment.label +'</h4></div>');
+                          }
+                          if(key == "emotion"){
+                              $('#results').append('<div class="data"><h4>' + 'Sadness: ' + data.keywords[0].emotion.sadness +'</h4></div>');
+                                $('#results').append('<div class="data"><h4>' + 'Joy: ' + data.keywords[0].emotion.joy +'</h4></div>');
+                                  $('#results').append('<div class="data"><h4>' + 'Disgust: ' + data.keywords[0].emotion.disgust +'</h4></div>');
+                                    $('#results').append('<div class="data"><h4>' + 'Fear: ' + data.keywords[0].emotion.fear +'</h4></div>');
+                                      $('#results').append('<div class="data"><h4>' + 'Anger: ' + data.keywords[0].emotion.anger +'</h4></div>');
+                                    }
+                      }
                   },
                 });
               });
