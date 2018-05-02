@@ -1,6 +1,6 @@
 ﻿# Milestone 4
 
-##Differences from Last Milestone
+## Differences from Last Milestone
 
 ##### One of the first differences we implemented was that we started working on a speech-to-text transcription which is displayed when you first run the server. At the moment, we haven’t hooked it up to the front-end yet and it only takes in default audio files that we have included in our files, but the idea for it is that it will transcribe audio data provided by our users of their voice communications in game. This transcription will then be sent to a separate natural language processing API which will evaluate their speech. 
 
@@ -20,10 +20,10 @@
 | :--------------- | :--------------- |
 | ![](/m4-screenshots/profile-old.PNG) | ![](/m4-screenshots/profile-new-1.PNG) |
 
-Privacy Issues
+## Privacy Issues
 ##### When working with data APIs and user data, it is important to take concerns of privacy into priority to ensure that our app maintains a trustworthy relationship with our users. Our app at the moment takes in text data and aims to eventually take in audio data from our users in the future. All of this data can reveal personal information about our users and their online personas which may be something they don’t want others to know about. To ensure anonymity for our users, we can do things like not attach their data to their account/personal information and provide users the option to give data but not enforce that they do. At the current moment, we plan to use generic samples that we create ourselves in terms of text and audio to show to the TAs for grading feedback as to ensure that the information we have affects nobody besides ourselves. Should any other concerns of privacy come up during our development, our first course of action will be to consult the TAs or Professor Guo as soon as possible.
 
-##APIs that we have chosen (so far)
+## APIs that we have chosen (so far)
 
 #### [IBM Watson Speech to Text API] (https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/)
 
