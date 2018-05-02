@@ -13,7 +13,7 @@
 
 | Old Homepage (index.html) | New Homepage (index.html) |
 | :------------------------ | :-----------------------  |
-| ![](/m4-screenshots/index-old.PNG) | ![](/m4-screenshots/index-new-1.PNG) |
+| ![](/m4-screenshots/index-old.PNG) | ![](/m4-screenshots/index-new.PNG) |
 
 
 | Old profile.html | New profile.html |
