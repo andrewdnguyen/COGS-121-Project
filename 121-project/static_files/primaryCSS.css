@@ -54,6 +54,10 @@ body {
     }
 }
 
+div {
+    font-family: 'Averia Sans Libre', cursive;
+}
+
 h1 {
     font-family: 'Averia Sans Libre', cursive;
     font-size: 3em;

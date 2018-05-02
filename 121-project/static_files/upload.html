@@ -21,6 +21,7 @@
     <button id="typeTextButton">Analyze Text</button>
     <button id="getTextButton">Get Text</button>
     <br></br>
+    <div id="status"></div>
     <div id="results"></div>
     <!-- <a href="results.html"><button id="typeTextButton">Analyze Text</button></a> -->
     <a href="home.html"><button>Return to Home Page></button></a>
@@ -76,6 +77,7 @@
               },
               success: (data) => {
                 console.log('Successfully submitted text!');
+                $("#status").html('Successfully submitted! Press "Get Text" to read results.');
               }
             });
           });

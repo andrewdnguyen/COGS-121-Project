@@ -170,8 +170,11 @@ app.get('/text', (req, res) => {
       'version': '2018-03-16'
     });
 
+    var x = (allWords.length - 1);
+    console.log(x);
+
     var parameters = {
-      'text': allWords[0],
+      'text': allWords[x],
       'features': {
         'entities': {
           'emotion': true,
