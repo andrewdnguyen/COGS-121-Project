@@ -34,3 +34,7 @@ Full URL: https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/
 
 ##### As another IBM Cloud API, this goes in hand how it takes the speech, analyzes the words of the speech for emotional context, and returns the specific parameters of sentiments, emotions, and other relevant factors. We thought that this API would be essential for showing the user with useful text data about how their emotions were during a game as well as leveraging both quantitative and qualitative data to make these findings more intuitive and easier for users to understand.
 Full URL: https://www.ibm.com/watson/developercloud/natural-language-understanding/api/v1/
+
+### Visualization Plans
+
+To make the data more readable, it'd help to give those numbers a visual look by putting them on a scale of 0 to 1. Choosing a game doesn't do anything right now, but we want to tag whatever game they choose to the text they input, so that we see trends in their speech in different games (e.g. more toxic in Fortnite than Overwatch). Currently this just shows the most recent input's emotional data. We'd like to show all data - including all previously submitted words and their emotional results - on the user's report history in an expandable list, to make it easy to navigate submissions.
