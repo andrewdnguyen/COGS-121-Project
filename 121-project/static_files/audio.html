@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Choose/Upload</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css?family=Averia+Sans+Libre|Nunito" rel="stylesheet">
+    <style type="text/css">
+        @import url("primaryCSS.css");
+    </style>
+</head>
+
+<body>
+    <h1>Type what you said</h1>
+    <button id="startJob">Start Job</button>
+    <button id="getTranscript">Get Transcription</button>
+    <br></br>
+    <div id="status"></div>
+    <div id="results"></div>
+    <!-- <a href="results.html"><button id="typeTextButton">Analyze Text</button></a> -->
+    <a href="home.html"><button>Return to Home Page></button></a>
+    </p>
+</body>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="application/javascript" src="js_files/quizQuestions.js"></script>
+<script type="text/javascript">
+    $(document).ready(() => {
+        $('#startJob').click(() => {
+            $.ajax({
+              // all URLs are relative to http://localhost:3000/
+              url: 'encode',
+              type: 'GET', 
+              error: function(){
+                console.log('Failed to encode');
+              },
+              success: (data) => {
+                console.log('Successfully submitted text!');
+                $("#status").html('Job create a success!');
+              }
+            });
+          });
+
+          $('#getTranscript').click(() => {
+              $.ajax({
+                // all URLs are relative to http://localhost:3000/
+                url: 'transcribe',
+                type: 'GET',
+                error: function(){
+                  console.log('Failed to encode');
+                },
+                success: (data) => {
+                  console.log('Transcription complete');
+                  $("#status").html('Transcription: ' + data);
+                }
+              });
+            });
+
+        /*Old code to get specific item - not working, will use later
+        $('#getTextButton').click(() => {
+            const requestURL = 'text/' + $('#typeTextBox').val();
+            //const requestURL = 'text/';
+            console.log('making ajax request to:', requestURL);
+            // From: http://learn.jquery.com/ajax/jquery-ajax-methods/
+            // Using the core $.ajax() method since it's the most flexible.
+            // ($.get() and $.getJSON() are nicer convenience functions)
+            $.ajax({
+              // all URLs are relative to http://localhost:3000/
+              url: requestURL,
+              type: 'GET',
+              dataType : 'json', // this URL returns data in JSON format
+              success: (data) => {
+                console.log('You received some data!', data);
+                $('#results').html('Successfully fetched data at URL: ' + requestURL);
+                $('#results').html(data.words + " " data.results);
+              },
+            });
+          });*/
+    });
+</script>
+</html>
