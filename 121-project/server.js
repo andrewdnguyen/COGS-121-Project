@@ -302,12 +302,12 @@ app.get('/text', (req, res) => {
         'entities': {
           'emotion': true,
           'sentiment': true,
-          'limit': 2
+          'limit': 100
         },
         'keywords': {
           'emotion': true,
           'sentiment': true,
-          'limit': 2
+          'limit': 100
         }
       },
       "language": "en"
@@ -318,7 +318,7 @@ app.get('/text', (req, res) => {
         console.log('error:', err);
       else
         var results = JSON.stringify(response);
-        console.log(JSON.stringify(response, null, 2));
+        console.log(JSON.stringify(response, null, 100));
         res.send(results);
     });
   });

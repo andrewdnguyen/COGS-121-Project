@@ -120,6 +120,17 @@ button {
 
 button:hover {
     background-color: rgba(0,0,0,.1);
+    cursor: pointer;
+}
+
+button:enabled{
+    opacity: 1;
+    cursor: pointer;
+}
+
+button:disabled{
+    opacity: 0.5;
+    cursor: default;
 }
 
 /*Only relevant to home.html.*/

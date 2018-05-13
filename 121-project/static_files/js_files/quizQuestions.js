@@ -3,29 +3,34 @@ $(document).ready(() => {
     let quizButton = $('#startQuiz');
     let quizQuotes = $('.quoteNum');
     let topic = $('#topic');
-    let prevQuotes = $('#prevQ');
+    //let prevQuotes = $('#prevQ');
     let nextQuotes = $('#nextQ');
     let answer = $('#answer');
     let number = 1;
     topic.hide();
-    prevQuotes.hide();
+    //prevQuotes.hide();
     nextQuotes.hide();
     answer.hide();
     $('#startQuiz').click(toggleQuiz);
-    $('#prevQ').click(() => {
+    /*$('#prevQ').click(() => {
         if (number > 1){
             number--;
             quizQuotes.text('Quote #' + number);
-            randQuote();
+            randQuote(number);
             console.log('Previous quote!');
         } else {
             console.log('No previous quote!');
         }
+    });*/
+    $('input:radio').click( function(){
+         $("#nextQ").prop("disabled",false);
     });
     $('#nextQ').click(() => {
         number++;
-        randQuote();
+        randQuote(number);
         console.log('Next quote!');
+        $('input:radio').prop("checked",false);
+        $('#nextQ').prop("disabled", true);
     });
 });
 
@@ -35,7 +40,7 @@ function toggleQuiz(){
     let quizQuotes = $('.quoteNum');
     let topic = $('#topic');
     let quote = $('.quote');
-    let prevQuotes = $('#prevQ');
+    //let prevQuotes = $('#prevQ');
     let nextQuotes = $('#nextQ');
     let answer = $('#answer');
     let number = 1;
@@ -44,7 +49,7 @@ function toggleQuiz(){
         quizQuotes.empty();
         topic.hide();
         quote.hide();
-        prevQuotes.hide();
+        //prevQuotes.hide();
         nextQuotes.hide();
         answer.hide();
         number = 1;
@@ -54,26 +59,30 @@ function toggleQuiz(){
         quizQuotes.text("Quote #" + number);
         topic.show();
         quote.show();
-        prevQuotes.show();
+        //prevQuotes.show();
         nextQuotes.show();
+        nextQuoteButton(false);
         answer.show()
         console.log('Started quiz.');
       }
 }
 
-function randQuote() {
+function randQuote(number) {
     let quizButton = $('#startQuiz');
     let quizQuotes = $('.quoteNum');
     let topic = $('#topic');
-    let prevQuotes = $('#prevQ');
+    //let prevQuotes = $('#prevQ');
     let nextQuotes = $('#nextQ');
-    let number = 1;
     topic.show();
-    prevQuotes.show();
+    //prevQuotes.show();
     nextQuotes.show();
     let randNum = Math.floor((Math.random() * 10) + 1);
     const requestURL = 'quizQ/' + randNum;
     console.log('making ajax request to:', requestURL);
+    if (number == null){
+        number = 1;
+    }
+    console.log("quote number: " + number);
     $.ajax({
       // all URLs are relative to http://localhost:3000/
       url: requestURL,
@@ -83,7 +92,7 @@ function randQuote() {
           console.log('Quiz question shown!', quotes);
           if (quotes.number && quotes.content && quotes.topic) {
             //$('#status').html('Successfully fetched data at URL: ' + requestURL);
-            $('.quoteNum').html('Quote: ' + quotes.number);
+            $('.quoteNum').html('Quote: ' + number);
             $('#topic').html('Topic: ' + quotes.topic);
             $('.quote').html('Read this: ' + quotes.content);
           } else {
@@ -99,6 +108,7 @@ function randQuote() {
     $(document).ajaxError(() => {
       $('.quote').html('Error: unknown ajaxError!');
     });
+
 }
 
 function showPassword() {
@@ -107,6 +117,14 @@ function showPassword() {
         password.type = "text";
     } else {
         password.type = "password";
+    }
+}
+
+function nextQuoteButton(boolean){
+    if (boolean){
+        $("#nextQ").prop("disabled",false);
+    } else {
+        $("#nextQ").prop("disabled",true);
     }
 }
 
