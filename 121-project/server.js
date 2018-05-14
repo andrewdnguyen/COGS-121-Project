@@ -300,14 +300,18 @@ app.get('/text', (req, res) => {
       'text': allWords[x],
       'features': {
         'entities': {
-          'emotion': true,
+          'emotion': {
+              'targets': [
+                allWords[x]
+              ]
+            },
           'sentiment': true,
-          'limit': 100
+          'limit': 1000
         },
         'keywords': {
           'emotion': true,
           'sentiment': true,
-          'limit': 100
+          'limit': 1000
         }
       },
       "language": "en"

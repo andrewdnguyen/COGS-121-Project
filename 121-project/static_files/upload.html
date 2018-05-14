@@ -47,26 +47,29 @@
                 console.log('You received some data!', data);
                 $('#status').empty();
                 $('#results').empty();
-                for(let key in data.keywords[0]){
-                      $('#results').append('<div class="key" id="key"><h1>'+ key +'</h1></div>');
-                      if(key == "text"){
-                        $('#results').append('<h4>' + data.keywords[0].text +'</h4>');
+                let wordSize = data.keywords.length;
+                for (let i = 0; i < wordSize; i++) {
+                    for(let key in data.keywords[i]){
+                          $('#results').append('<div class="key" id="key"><h1>'+ key +'</h1></div>');
+                          if(key == "text"){
+                            $('#results').append('<h4>' + data.keywords[i].text +'</h4>');
+                          }
+                          if(key == "relevance"){
+                            $('#results').append('<h4>' + data.keywords[i].relevance +'</h4>');
+                          }
+                          if(key == "sentiment"){
+                            $('#results').append('<h4>Score: ' + data.keywords[i].sentiment.score +'</h4>');
+                              $('#results').append('<h4>Label: ' + data.keywords[i].sentiment.label +'</h4>');
+                          }
+                          if(key == "emotion"){
+                              $('#results').append('<h4>Sadness: ' + data.keywords[i].emotion.sadness +'</h4>');
+                                $('#results').append('<h4>Joy: ' + data.keywords[i].emotion.joy +'</h4>');
+                                  $('#results').append('<h4>Disgust: ' + data.keywords[i].emotion.disgust +'</h4>');
+                                    $('#results').append('<h4>Fear: ' + data.keywords[i].emotion.fear +'</h4>');
+                                      $('#results').append('<h4>Anger: ' + data.keywords[i].emotion.anger +'</h4>');
+                                    }
                       }
-                      if(key == "relevance"){
-                        $('#results').append('<h4>' + data.keywords[0].relevance +'</h4>');
-                      }
-                      if(key == "sentiment"){
-                        $('#results').append('<h4>Score: ' + data.keywords[0].sentiment.score +'</h4>');
-                          $('#results').append('<h4>Label: ' + data.keywords[0].sentiment.label +'</h4>');
-                      }
-                      if(key == "emotion"){
-                          $('#results').append('<h4>Sadness: ' + data.keywords[0].emotion.sadness +'</h4>');
-                            $('#results').append('<h4>Joy: ' + data.keywords[0].emotion.joy +'</h4>');
-                              $('#results').append('<h4>Disgust: ' + data.keywords[0].emotion.disgust +'</h4>');
-                                $('#results').append('<h4>Fear: ' + data.keywords[0].emotion.fear +'</h4>');
-                                  $('#results').append('<h4>Anger: ' + data.keywords[0].emotion.anger +'</h4>');
-                                }
-                  }
+                }
               },
             });
           });
@@ -86,7 +89,7 @@
               success: (data) => {
                 console.log('Successfully submitted text!');
                 $('#status').html('Successfully submitted! Press "Get Text" to read results.');
-                $('.data').empty();
+                $('#results').empty();
               }
             });
           });
