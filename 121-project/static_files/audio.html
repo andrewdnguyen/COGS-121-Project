@@ -15,6 +15,7 @@
     <h1>Type what you said</h1>
     <button id="startJob">Start Job</button>
     <button id="getTranscript">Get Transcription</button>
+    <button id="NLPButton">Analyze Transcription</button>
     <br></br>
     <div id="status"></div>
     <div id="results"></div>
@@ -28,16 +29,50 @@
 <script type="application/javascript" src="js_files/quizQuestions.js"></script>
 <script type="text/javascript">
     $(document).ready(() => {
+        $('#NLPButton').hide();
+        $('#NLPButton').click(() => {
+            $.ajax({
+              url: 'audio',
+              type: 'GET',
+              dataType : 'json',
+              success: (data) => {
+                console.log('You received some data!', data);
+                $('#status').empty();
+                $('#results').empty();
+                for(let key in data.keywords[0]){
+                      $('#results').append('<div class="key"><h1>' + key +'</h1></div>');
+                      if(key == "text"){
+                        $('#results').append('<div class="data"><h4>' + data.keywords[0].text +'</h4></div>');
+                      }
+                      if(key == "relevance"){
+                        $('#results').append('<div class="data"><h4>' + data.keywords[0].relevance +'</h4></div>');
+                      }
+                      if(key == "sentiment"){
+                        $('#results').append('<div class="data"><h4>' + 'Score: ' + data.keywords[0].sentiment.score +'</h4></div>');
+                          $('#results').append('<div class="data"><h4>' + 'Label: ' + data.keywords[0].sentiment.label +'</h4></div>');
+                      }
+                      if(key == "emotion"){
+                          $('#results').append('<div class="data"><h4>' + 'Sadness: ' + data.keywords[0].emotion.sadness +'</h4></div>');
+                            $('#results').append('<div class="data"><h4>' + 'Joy: ' + data.keywords[0].emotion.joy +'</h4></div>');
+                              $('#results').append('<div class="data"><h4>' + 'Disgust: ' + data.keywords[0].emotion.disgust +'</h4></div>');
+                                $('#results').append('<div class="data"><h4>' + 'Fear: ' + data.keywords[0].emotion.fear +'</h4></div>');
+                                  $('#results').append('<div class="data"><h4>' + 'Anger: ' + data.keywords[0].emotion.anger +'</h4></div>');
+                                }
+                    }
+                  }
+                })
+              });
         $('#startJob').click(() => {
             $.ajax({
               // all URLs are relative to http://localhost:3000/
               url: 'encode',
-              type: 'GET', 
+              type: 'GET',
               error: function(){
                 console.log('Failed to encode');
               },
               success: (data) => {
                 console.log('Successfully submitted text!');
+                $("#NLPButton").hide();
                 $("#status").html('Job create a success!');
               }
             });
@@ -54,6 +89,7 @@
                 success: (data) => {
                   console.log('Transcription complete');
                   $("#status").html('Transcription: ' + data);
+                  $("#NLPButton").show();
                 }
               });
             });

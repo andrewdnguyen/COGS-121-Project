@@ -328,6 +328,59 @@ app.get('/text', (req, res) => {
   });
 });
 
+app.get('/audio', (req, res) => {
+  // db.all() fetches all results from an SQL query into the 'rows' variable:
+  db.all('SELECT transcript FROM transcripts', (err, rows) => {
+
+    var results;
+
+    console.log(rows);
+    const allTranscripts = rows.map(e => e.transcript);
+    console.log(allTranscripts);
+
+
+    var NaturalLanguageUnderstandingV1 = require('watson-developer-cloud/natural-language-understanding/v1.js');
+    var natural_language_understanding = new NaturalLanguageUnderstandingV1({
+      'username': '8cbbdded-1f4d-4ea3-b143-13371634a65e',
+      'password': 's8Yll4h8ASYf',
+      'version': '2018-03-16'
+    });
+
+    var x = (allTranscripts.length - 1);
+    console.log(x);
+
+    var parameters = {
+      'text': allTranscripts[x],
+      'features': {
+        'entities': {
+          'emotion': {
+              'targets': [
+                allTranscripts[x]
+              ]
+            },
+          'sentiment': true,
+          'limit': 1000
+        },
+        'keywords': {
+          'emotion': true,
+          'sentiment': true,
+          'limit': 1000
+        }
+      },
+      "language": "en"
+    }
+
+    natural_language_understanding.analyze(parameters, function(err, response) {
+      if (err)
+        console.log('error:', err);
+      else
+        var results = JSON.stringify(response);
+        console.log(JSON.stringify(response, null, 100));
+        res.send(results);
+    });
+  });
+});
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true})); // hook up with your app
 app.post('/text', (req, res) => {
