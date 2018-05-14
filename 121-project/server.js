@@ -300,14 +300,18 @@ app.get('/text', (req, res) => {
       'text': allWords[x],
       'features': {
         'entities': {
-          'emotion': true,
+          'emotion': {
+              'targets': [
+                allWords[x]
+              ]
+            },
           'sentiment': true,
-          'limit': 2
+          'limit': 1000
         },
         'keywords': {
           'emotion': true,
           'sentiment': true,
-          'limit': 2
+          'limit': 1000
         }
       },
       "language": "en"
@@ -318,7 +322,7 @@ app.get('/text', (req, res) => {
         console.log('error:', err);
       else
         var results = JSON.stringify(response);
-        console.log(JSON.stringify(response, null, 2));
+        console.log(JSON.stringify(response, null, 100));
         res.send(results);
     });
   });
