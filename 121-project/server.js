@@ -159,7 +159,7 @@ app.post('/upload',function(req,res){
 
       var file = route;
       var params = { //Data about the audio file
-          content_type: 'audio/flac', //filetype CHANGE TO MP3 if using mp3 files to test
+          content_type: 'audio/mp3', //filetype CHANGE TO MP3 if using mp3 files to test
           audio: fs.createReadStream(file), //Creates a stream to read the mp3 file
           //'user_token': 'job25',
           timestamps: true //Provides timestamp info
