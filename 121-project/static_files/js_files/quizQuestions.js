@@ -1,17 +1,30 @@
 "use strict";
 $(document).ready(() => {
-    let quizButton = $('#startQuiz');
+    let quizButton = $('#quizButton');
     let quizQuotes = $('.quoteNum');
     let topic = $('#topic');
+    let quote = $('.quote');
+    let number = 1;
+    let counter = 0;
     //let prevQuotes = $('#prevQ');
     let nextQuotes = $('#nextQ');
     let answer = $('#answer');
-    let number = 1;
     topic.hide();
     //prevQuotes.hide();
     nextQuotes.hide();
     answer.hide();
-    $('#startQuiz').click(toggleQuiz);
+    // Enables view of the quiz. Begins with a random quote and r
+    quizButton.click( function(){
+        toggleQuiz();
+        if (quizButton.text() == 'Click to start the quiz!'){
+            $('#counter').hide();
+            number = 1;
+            counter = 0;
+        } else {
+            $('#counter').show();
+        }
+    });
+    // Old, deprecated code for functionality of the previous quote.
     /*$('#prevQ').click(() => {
         if (number > 1){
             number--;
@@ -22,39 +35,65 @@ $(document).ready(() => {
             console.log('No previous quote!');
         }
     });*/
+    // Once any of the radio buttons is clicked, this enables the user to submit their response and move on to the next quote.
     $('input:radio').click( function(){
          $("#nextQ").prop("disabled",false);
     });
     $('#nextQ').click(() => {
+        if ($("input:checked").val() == 'true'){
+            counter++;
+            console.log('Correct!');
+        } else {
+            console.log('Incorrect! Try again.');
+        }
+        $('#counter').text('Answers Correct: ' + counter + '/' + number);
         number++;
         randQuote(number);
         console.log('Next quote!');
         $('input:radio').prop("checked",false);
         $('#nextQ').prop("disabled", true);
+        if (number > 10) {
+            quizQuotes.hide();
+            topic.hide();
+            quote.hide();
+            //prevQuotes.hide();
+            nextQuotes.hide();
+            answer.hide();
+            $('#counter').text('You have finished the quiz! You answered ' + counter + ' quotes correctly!');
+            quizButton.text('Take the quiz again!');
+            console.log('You have finished the quiz! You answered ' + counter + ' quotes correctly!');
+            number = 1;
+            counter = 0;
+        }
     });
 });
 
 
 function toggleQuiz(){
-    let quizButton = $('#startQuiz');
+    let quizButton = $('#quizButton');
     let quizQuotes = $('.quoteNum');
     let topic = $('#topic');
     let quote = $('.quote');
+    let number = 1;
+    let counter = 0;
     //let prevQuotes = $('#prevQ');
     let nextQuotes = $('#nextQ');
     let answer = $('#answer');
-    let number = 1;
-    quizButton.text(quizButton.text()== 'Click to start the quiz!' ? 'Quit quiz and hide quotes.' : 'Click to start the quiz!');
-    if (quizQuotes.text() != "") {
+    let counterShown = $('#counter');
+    quizButton.text(quizButton.text() == 'Click to start the quiz!' ? 'Quit quiz and hide quotes.' : 'Click to start the quiz!');
+    if (quizButton.text() != 'Quit quiz and hide quotes.') {
         quizQuotes.empty();
         topic.hide();
         quote.hide();
         //prevQuotes.hide();
         nextQuotes.hide();
         answer.hide();
+        counterShown.empty();
         number = 1;
+        counter = 0;
         console.log('Quitted quiz.');
     } else {
+        quizButton.text('Quit quiz and hide quotes.');
         randQuote();
         quizQuotes.text("Quote #" + number);
         topic.show();
@@ -90,11 +129,14 @@ function randQuote(number) {
       dataType : 'json', // this URL returns data in JSON format
       success: (quotes) => {
           console.log('Quiz question shown!', quotes);
-          if (quotes.number && quotes.content && quotes.topic) {
+          if (quotes.number && quotes.content && quotes.topic &&
+              quotes.badmouth && quotes.banter) {
             //$('#status').html('Successfully fetched data at URL: ' + requestURL);
             $('.quoteNum').html('Quote: ' + number);
             $('#topic').html('Topic: ' + quotes.topic);
             $('.quote').html('Read this: ' + quotes.content);
+            $('#badmouth').val(quotes.badmouth);
+            $('#banter').val(quotes.banter);
           } else {
               //$('#status').html('Error: could not find user at URL: ' + requestURL);
               // clear the display

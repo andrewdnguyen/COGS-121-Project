@@ -18,28 +18,28 @@ const db = new sqlite3.Database('data.db');
 //  which we don't want)
 db.serialize(() => {
   // create a new database table:
-  db.run("CREATE TABLE questions_to_contexts (idx TEXT, number TEXT, content TEXT, topic TEXT)");
+  db.run("CREATE TABLE questions_to_contexts (idx TEXT, number TEXT, content TEXT, topic TEXT, badmouth TEXT, banter TEXT)");
   db.run("CREATE TABLE transcripts (transcript TEXT)");
   db.run("CREATE TABLE words_said_to_text (words TEXT)");
   db.run("CREATE TABLE audio (audiofiles TEXT)");
 
   // insert 10 rows of data:
-  db.run("INSERT INTO questions_to_contexts VALUES ('1', '1', 'You are a trash jungler.', 'swearing')");
-  db.run("INSERT INTO questions_to_contexts VALUES ('2', '2', 'Your brain must be a pea.', 'profanity')");
-  db.run("INSERT INTO questions_to_contexts VALUES ('3', '3', 'Lol, just concede piece of garbage.', 'sarcasm')");
-  db.run("INSERT INTO questions_to_contexts VALUES ('4', '4', 'Hey, just concede with us or I will report.', 'emphasis')");
-  db.run("INSERT INTO questions_to_contexts VALUES ('5', '5', 'OMG, your gank and gameplay suck.', 'anger')");
-  db.run("INSERT INTO questions_to_contexts VALUES ('6', '6', 'Stop fighting dude.', 'disappointment')");
-  db.run("INSERT INTO questions_to_contexts VALUES ('7', '7', 'Get out of my lane!', 'sadness')");
-  db.run("INSERT INTO questions_to_contexts VALUES ('8', '8', 'Get your CS up.', 'sexual')");
-  db.run("INSERT INTO questions_to_contexts VALUES ('9', '9', 'Use your ult yo.', 'violence')");
-  db.run("INSERT INTO questions_to_contexts VALUES ('10', '10', 'I will report and find you irl.', 'threat')");
+  db.run("INSERT INTO questions_to_contexts VALUES ('1', '1', 'You are a trash jungler.', 'disappointment', 'true', 'false')");
+  db.run("INSERT INTO questions_to_contexts VALUES ('2', '2', 'Your brain must be a pea.', 'profanity', 'true', 'false')");
+  db.run("INSERT INTO questions_to_contexts VALUES ('3', '3', 'Lol, just concede piece of garbage.', 'belittling', 'true', 'false')");
+  db.run("INSERT INTO questions_to_contexts VALUES ('4', '4', 'Hey, just concede with us or I will report.', 'ordering', 'false', 'true')");
+  db.run("INSERT INTO questions_to_contexts VALUES ('5', '5', 'OMG, your gank and gameplay suck.', 'commenting', 'false', 'true')");
+  db.run("INSERT INTO questions_to_contexts VALUES ('6', '6', 'Stop fighting dude.', 'intervention', 'false', 'true')");
+  db.run("INSERT INTO questions_to_contexts VALUES ('7', '7', 'Get out of my lane!', 'anger', 'false', 'true')");
+  db.run("INSERT INTO questions_to_contexts VALUES ('8', '8', 'Get your CS up.', 'condescending', 'false', 'true')");
+  db.run("INSERT INTO questions_to_contexts VALUES ('9', '9', 'Use your ult yo.', 'domineering', 'false', 'true')");
+  db.run("INSERT INTO questions_to_contexts VALUES ('10', '10', 'I will report and find you irl.', 'threat', 'true', 'false')");
 
   console.log('successfully created the questions_to_contexts table in data.db');
 
   // print them out to confirm their contents:
-  db.each("SELECT idx, number, content, topic FROM questions_to_contexts", (err, row) => {
-      console.log(row.idx + ": " + row.number + ' - ' + row.content + ' - ' + row.topic);
+  db.each("SELECT idx, number, content, topic, badmouth, banter FROM questions_to_contexts", (err, row) => {
+      console.log(row.idx + ": " + row.number + ' - ' + row.content + ' - ' + row.topic + ' - ' + row.badmouth + ' - ' + row.banter);
   });
 });
 

@@ -39,6 +39,9 @@
                 console.log('You received some data!', data);
                 $('#status').empty();
                 $('#results').empty();
+                //console.log(data.transcript);
+                $('#results').append((JSON.stringify(data.transcript, null, 2)));
+                console.log((JSON.stringify(data.transcript, null, 2)));
                 for(let key in data){
                   if(key == "sentiment"){
                     $('#results').append('<div class="data"><h2>' +  "Sentiment" +'</h2></div>');

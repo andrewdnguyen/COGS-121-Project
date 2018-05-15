@@ -45,8 +45,11 @@
               dataType : 'json',
               success: (data) => {
                 console.log('You received some data!', data);
+                console.log($('#typeTextBox').val());
                 $('#status').empty();
                 $('#results').empty();
+                $('#results').append('<div class="data"><h2>' +  "Text Entered" +'</h2></div>');
+                $('#results').append($('#typeTextBox').val());
                 for(let key in data){
                       if(key == "sentiment"){
                         $('#results').append('<div class="data"><h2>' +  "Sentiment" +'</h2></div>');

@@ -299,8 +299,7 @@ app.get('/text', (req, res) => {
     var parameters = {
       'text': allWords[x],
       'features': {
-          'emotion': {
-          },
+          'emotion': {},
           'sentiment':{},
       },
       "language": "en"
