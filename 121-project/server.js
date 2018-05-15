@@ -299,20 +299,9 @@ app.get('/text', (req, res) => {
     var parameters = {
       'text': allWords[x],
       'features': {
-        'entities': {
           'emotion': {
-              'targets': [
-                allWords[x]
-              ]
-            },
-          'sentiment': true,
-          'limit': 1000
-        },
-        'keywords': {
-          'emotion': true,
-          'sentiment': true,
-          'limit': 1000
-        }
+          },
+          'sentiment':{},
       },
       "language": "en"
     }
@@ -352,20 +341,8 @@ app.get('/audio', (req, res) => {
     var parameters = {
       'text': allTranscripts[x],
       'features': {
-        'entities': {
-          'emotion': {
-              'targets': [
-                allTranscripts[x]
-              ]
-            },
-          'sentiment': true,
-          'limit': 1000
-        },
-        'keywords': {
-          'emotion': true,
-          'sentiment': true,
-          'limit': 1000
-        }
+        'emotion': {},
+        'sentiment': {}
       },
       "language": "en"
     }

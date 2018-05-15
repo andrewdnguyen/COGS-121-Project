@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <h1>Type what you said</h1>
+    <h1>Time to Analyze your Clip!</h1>
     <button id="startJob">Start Job</button>
     <button id="getTranscript">Get Transcription</button>
     <button id="NLPButton">Analyze Transcription</button>
@@ -39,25 +39,20 @@
                 console.log('You received some data!', data);
                 $('#status').empty();
                 $('#results').empty();
-                for(let key in data.keywords[0]){
-                      $('#results').append('<div class="key"><h1>' + key +'</h1></div>');
-                      if(key == "text"){
-                        $('#results').append('<div class="data"><h4>' + data.keywords[0].text +'</h4></div>');
-                      }
-                      if(key == "relevance"){
-                        $('#results').append('<div class="data"><h4>' + data.keywords[0].relevance +'</h4></div>');
-                      }
-                      if(key == "sentiment"){
-                        $('#results').append('<div class="data"><h4>' + 'Score: ' + data.keywords[0].sentiment.score +'</h4></div>');
-                          $('#results').append('<div class="data"><h4>' + 'Label: ' + data.keywords[0].sentiment.label +'</h4></div>');
-                      }
-                      if(key == "emotion"){
-                          $('#results').append('<div class="data"><h4>' + 'Sadness: ' + data.keywords[0].emotion.sadness +'</h4></div>');
-                            $('#results').append('<div class="data"><h4>' + 'Joy: ' + data.keywords[0].emotion.joy +'</h4></div>');
-                              $('#results').append('<div class="data"><h4>' + 'Disgust: ' + data.keywords[0].emotion.disgust +'</h4></div>');
-                                $('#results').append('<div class="data"><h4>' + 'Fear: ' + data.keywords[0].emotion.fear +'</h4></div>');
-                                  $('#results').append('<div class="data"><h4>' + 'Anger: ' + data.keywords[0].emotion.anger +'</h4></div>');
-                                }
+                for(let key in data){
+                  if(key == "sentiment"){
+                    $('#results').append('<div class="data"><h2>' +  "Sentiment" +'</h2></div>');
+                    $('#results').append('<div class="data"><h4>' + 'Score: ' + data.sentiment.document.score +'</h4></div>');
+                      $('#results').append('<div class="data"><h4>' + 'Label: ' + data.sentiment.document.label +'</h4></div>');
+                  }
+                  if(key == "emotion"){
+                    $('#results').append('<div class="data"><h2>' + "Emotion" +'</h2></div>');
+                      $('#results').append('<div class="data"><h4>' + 'Sadness: ' + data.emotion.document.emotion.sadness +'</h4></div>');
+                        $('#results').append('<div class="data"><h4>' + 'Joy: ' + data.emotion.document.emotion.joy +'</h4></div>');
+                          $('#results').append('<div class="data"><h4>' + 'Disgust: ' + data.emotion.document.emotion.disgust +'</h4></div>');
+                            $('#results').append('<div class="data"><h4>' + 'Fear: ' + data.emotion.document.emotion.fear +'</h4></div>');
+                              $('#results').append('<div class="data"><h4>' + 'Anger: ' + data.emotion.document.emotion.anger +'</h4></div>');
+                            }
                     }
                   }
                 })
