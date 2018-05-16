@@ -1,25 +1,32 @@
 "use strict";
 $(document).ready(() => {
-    let quizButton = $('#quizButton');
+    let quizButton = $('.quizButton');
     let quizQuotes = $('.quoteNum');
-    let topic = $('#topic');
+    let topic = $('.topic');
     let quote = $('.quote');
-    let number = 1;
+    let number = 0;
     let counter = 0;
+    let maxQuotes = 10;
     //let prevQuotes = $('#prevQ');
-    let nextQuotes = $('#nextQ');
-    let answer = $('#answer');
+    let nextQuotes = $('.nextQ');
+    let answer = $('.answer');
+    let showResp = $('.showResp');
+    let responses = $('#responses');
     topic.hide();
     //prevQuotes.hide();
     nextQuotes.hide();
     answer.hide();
+    showResp.hide();
+    responses.hide();
+    responses.empty();
     // Enables view of the quiz. Begins with a random quote and r
     quizButton.click( function(){
         toggleQuiz();
         if (quizButton.text() == 'Click to start the quiz!'){
-            $('#counter').hide();
-            number = 1;
+            $('.counter').hide();
+            number = 0;
             counter = 0;
+            showResp.hide();
         } else {
             $('#counter').show();
         }
@@ -37,21 +44,47 @@ $(document).ready(() => {
     });*/
     // Once any of the radio buttons is clicked, this enables the user to submit their response and move on to the next quote.
     $('input:radio').click( function(){
-         $("#nextQ").prop("disabled",false);
+         $(".nextQ").prop("disabled",false);
     });
-    $('#nextQ').click(() => {
+    let randArray = [];
+    for (let i = 1; i <= maxQuotes; i++) {randArray.push(i)}
+    console.log(randArray);
+    shuffle(randArray);
+    function shuffle(array) {
+        var currIndex = array.length, tempVal, randIndex;
+        while (currIndex > 0){
+            randIndex = Math.floor(Math.random() * currIndex);
+            currIndex--;
+            tempVal = array[currIndex];
+            array[currIndex] = array[randIndex];
+            array[randIndex] = tempVal;
+        }
+        return array;
+    }
+    console.log(randArray);
+    $('.nextQ').click(() => {
+        $('#responses').append('<h2>' + $('.quoteNum').text() + '</h2>');
+        $('#responses').append('<p>' + $('.topic').text() + '</p>');
+        $('#responses').append('<p>' + $('.quote').text() + '</p>');
+        let responses = $('#responses');
+        let checked = $("input:checked").attr('id');
+        responses.append(checked);
         if ($("input:checked").val() == 'true'){
             counter++;
             console.log('Correct!');
+            $('#responses').append(' - Correct!');
         } else {
             console.log('Incorrect! Try again.');
+            $('#responses').append(' - Incorrect!');
         }
-        $('#counter').text('Answers Correct: ' + counter + '/' + number);
+        $('#responses').append('<br><br>');
+        $('.counter').text('Answers Correct: ' + counter + '/' + number);
+        console.log(randArray[number]);
+        randQuote(randArray[number]);
         number++;
-        randQuote(number);
         console.log('Next quote!');
         $('input:radio').prop("checked",false);
-        $('#nextQ').prop("disabled", true);
+        $('.nextQ').prop("disabled", true);
         if (number > 10) {
             quizQuotes.hide();
             topic.hide();
@@ -59,27 +92,34 @@ $(document).ready(() => {
             //prevQuotes.hide();
             nextQuotes.hide();
             answer.hide();
-            $('#counter').text('You have finished the quiz! You answered ' + counter + ' quotes correctly!');
+            showResp.show();
+            $('.counter').text('You have finished the quiz! You answered ' + counter + ' quotes correctly!');
             quizButton.text('Take the quiz again!');
             console.log('You have finished the quiz! You answered ' + counter + ' quotes correctly!');
             number = 1;
             counter = 0;
         }
     });
+    $('.showResp').click(() => {
+        responses.toggle();
+        showResp.text(showResp.text() == 'Show Responses' ? 'Hide Responses' : 'Show Responses');
+    });
 });
 
 
 function toggleQuiz(){
-    let quizButton = $('#quizButton');
+    let quizButton = $('.quizButton');
     let quizQuotes = $('.quoteNum');
-    let topic = $('#topic');
+    let topic = $('.topic');
     let quote = $('.quote');
     let number = 1;
     let counter = 0;
     //let prevQuotes = $('#prevQ');
-    let nextQuotes = $('#nextQ');
-    let answer = $('#answer');
-    let counterShown = $('#counter');
+    let nextQuotes = $('.nextQ');
+    let answer = $('.answer');
+    let counterShown = $('.counter');
+    let showResp = $('.showResp');
+    let responses = $('#responses');
     quizButton.text(quizButton.text() == 'Click to start the quiz!' ? 'Quit quiz and hide quotes.' : 'Click to start the quiz!');
     if (quizButton.text() != 'Quit quiz and hide quotes.') {
         quizQuotes.empty();
@@ -89,6 +129,8 @@ function toggleQuiz(){
         nextQuotes.hide();
         answer.hide();
         counterShown.empty();
+        responses.hide();
+        responses.empty();
         number = 1;
         counter = 0;
         console.log('Quitted quiz.');
@@ -101,26 +143,27 @@ function toggleQuiz(){
         //prevQuotes.show();
         nextQuotes.show();
         nextQuoteButton(false);
-        answer.show()
+        answer.show();
         console.log('Started quiz.');
       }
 }
 
 function randQuote(number) {
-    let quizButton = $('#startQuiz');
+    let quizButton = $('.startQuiz');
     let quizQuotes = $('.quoteNum');
-    let topic = $('#topic');
+    let topic = $('.topic');
     //let prevQuotes = $('#prevQ');
-    let nextQuotes = $('#nextQ');
+    let nextQuotes = $('.nextQ');
+    let responses = $('#responses');
+    let count = 10;
     topic.show();
     //prevQuotes.show();
     nextQuotes.show();
-    let randNum = Math.floor((Math.random() * 10) + 1);
-    const requestURL = 'quizQ/' + randNum;
+    const requestURL = 'quizQ/' + number;
     console.log('making ajax request to:', requestURL);
-    if (number == null){
-        number = 1;
-    }
+    // if (number == null){
+    //     number = 1;
+    // }
     console.log("quote number: " + number);
     $.ajax({
       // all URLs are relative to http://localhost:3000/
@@ -133,7 +176,7 @@ function randQuote(number) {
               quotes.badmouth && quotes.banter) {
             //$('#status').html('Successfully fetched data at URL: ' + requestURL);
             $('.quoteNum').html('Quote: ' + number);
-            $('#topic').html('Topic: ' + quotes.topic);
+            $('.topic').html('Topic: ' + quotes.topic);
             $('.quote').html('Read this: ' + quotes.content);
             $('#badmouth').val(quotes.badmouth);
             $('#banter').val(quotes.banter);
@@ -164,9 +207,9 @@ function showPassword() {
 
 function nextQuoteButton(boolean){
     if (boolean){
-        $("#nextQ").prop("disabled",false);
+        $(".nextQ").prop("disabled",false);
     } else {
-        $("#nextQ").prop("disabled",true);
+        $(".nextQ").prop("disabled",true);
     }
 }
 
