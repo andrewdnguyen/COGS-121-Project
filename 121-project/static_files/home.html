@@ -6,45 +6,55 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Login</title>
         <link href="https://fonts.googleapis.com/css?family=Averia+Sans+Libre|Nunito" rel="stylesheet">
-        <style type="text/css">
-            @import url("primaryCSS.css");
-        </style>
+        <link rel="stylesheet" type="text/css" href="main.css">
     </head>
-    <body>
-        <h1>Welcome to Toxicon*</h1>
-        <h2>Test your toxicity!</h2>
-        <a href="profile.html">
-            <img src="profile.png" width="40" height="auto">
-        </a>
-        <a href="profile.html">
-            <button>Edit Profile</button>
-        </a>
-        <br>
-        <div class="options">
-            <p>Upload audio of you talking while playing to check your toxicity score!</p>
-            <a href="upload.html"><button>Upload Audio</button></a>
-            <p>Start the quiz to determine your toxicity level relative to your responses.</p>
-            <a href="quiz.html"><button>Start Quiz</button></a>
-            <!--<p>Start the quiz to determine your toxicity level relative to your responses.</p>-->
-            <br>
-            <p>*Name may be subject to change.</p>
-            <!--<p>*Name may be subject to change.</p>-->
-        </div>
-        <a href="index.html"><button>Logout</button></a>
 
-        <!--Code below indicates a misplaced functionality-->
-        <!--<br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <p class="quoteNum"></p>
-        <p class="quoteNum"></p>
-        <p class="quizQs"></p>
-        <p class="quote"></p>
-        <button id="startQuiz">Click me!</button>
-        <button id="prevQ">Previous Quote</button>
-        <button id="nextQ">Next Quote</button>
-        <p id="status"></p>-->
+    <body>
+
+        <!-- Navigation bar -->
+        <div id="nav">
+            <ul>
+                <div style="float: left;">
+                    <li><a href="home.html"><button>Home</button></a></li>
+                    <li><a href="resources.html"><button>Resources</button></a><li>
+                </div>
+                <div style="float: right;">
+                    <li>
+                        <a href="profile.html">
+                            <img src="profile.png" width="40" height="auto" style="margin-top: 6px; margin-left: 5px;">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="profile.html">
+                            <button>Profile</button>
+                        </a>
+                    </li>
+                    <li><a href="index.html"><button style="margin-right: 7px;">Logout</button></a></li>
+                </div>
+            </ul>
+        </div>
+
+        <div style="text-align: center;">
+            <br></br>
+            <h1>Welcome to Toxicon</h1>
+            <h2>Test your toxicity!</h2>
+            <div class="options">
+                <div class="text_option">
+                    <p>Upload chat messages from  your game.</p>
+                    <a href="upload.html"><button>Upload Text</button></a>
+                </div>
+                <br></br>
+                <div class="audio_option">
+                    <p>Send audio of you talking while playing.</p>
+                    <a href="audio.html"><button>Send Audio</button></a>
+                </div>
+                <br><br>
+                <div class="quiz_option">
+                    <p>Start the quiz to determine your toxicity level relative to your responses.</p>
+                    <a href="quiz.html"><button>Start Quiz</button></a>
+                </div>
+            </div>
+        </div>
     </body>
     <!--
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">

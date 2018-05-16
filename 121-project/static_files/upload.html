@@ -6,31 +6,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
     <link href="https://fonts.googleapis.com/css?family=Averia+Sans+Libre|Nunito" rel="stylesheet">
-    <style type="text/css">
-        @import url("primaryCSS.css");
-    </style>
+    <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 
 <body>
-    <h1>Choose a Game</h1>
-    <a href="https://www.epicgames.com/fortnite"><button>Fortnite</button></a>
-    <a href="https://na.leagueoflegends.com/en/"><button>League of Legends</button></a>
-    <a href="https://playoverwatch.com/"><button>Overwatch</button></a>
-    <form class="fileupload" action="upload" method="post" enctype="multipart/form-data">
-      <h1>Upload Audio Here (Must be .mp3 format!)</h1>
-      <input type="file" name="upfile" value="">
-      <input type="submit" />
-    </form>
-    <h1>Type what you said</h1>
-    <input id="typeTextBox" type="text" size="20"/>
-    <button id="typeTextButton">Analyze Text</button>
-    <button id="getTextButton">Get Text</button>
+    <!-- Navigation bar -->
+    <div id="nav">
+        <ul>
+            <div style="float: left;">
+                <li><a href="home.html"><button>Home</button></a></li>
+                <li><a href="resources.html"><button>Resources</button></a><li>
+            </div>
+            <div style="float: right;">
+                <li>
+                    <a href="profile.html">
+                        <img src="profile.png" width="40" height="auto" style="margin-top: 6px; margin-left: 5px;">
+                    </a>
+                </li>
+                <li>
+                    <a href="profile.html">
+                        <button>Profile</button>
+                    </a>
+                </li>
+                <li><a href="index.html"><button style="margin-right: 7px;">Logout</button></a></li>
+            </div>
+        </ul>
+    </div>
+
     <br></br>
-    <div id="status"></div>
-    <div id="results"></div>
-    <!-- <a href="results.html"><button id="typeTextButton">Analyze Text</button></a> -->
-    <a href="home.html"><button>Return to Home Page></button></a>
-    </p>
+    <div style="text-align: center;">
+      <div class="options">
+          <br></br>
+          <h1>Choose a Game</h1>
+          <a href="https://www.epicgames.com/fortnite"><button>Fortnite</button></a>
+          <a href="https://na.leagueoflegends.com/en/"><button>League of Legends</button></a>
+          <a href="https://playoverwatch.com/"><button>Overwatch</button></a>
+
+          <!-- Commented out because of audio.html
+          <br></br><br></br>
+          <form class="fileupload" action="upload" method="post" enctype="multipart/form-data">
+            <h1>Upload Audio Here (Must be .mp3 format!)</h1>
+            <input type="file" name="upfile" value="">
+            <input type="submit" />
+          </form> -->
+          
+          <br></br><br></br>
+          <h1>Type what you said</h1>
+          <input id="typeTextBox" type="text" size="20"/>
+          <button id="typeTextButton">Analyze Text</button>
+          <button id="getTextButton">Get Text</button>
+          <br></br>
+          <div id="status"></div>
+          <div id="results"></div>
+          <!-- <a href="results.html"><button id="typeTextButton">Analyze Text</button></a> -->
+          <a href="home.html"><button>Return to Home Page</button></a>
+          </p>
+      </div>
+    </div>
 </body>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

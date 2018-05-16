@@ -5,37 +5,64 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Login</title>
         <link href="https://fonts.googleapis.com/css?family=Averia+Sans+Libre|Nunito" rel="stylesheet">
-        <style type="text/css">
-            @import url("primaryCSS.css");
-        </style>
+        <link rel="stylesheet" type="text/css" href="main.css">
     </head>
     <body>
-        <h1>Quiz yourself!</h1>
-        <!--<br>
-        <button id="start">Start Quiz</button><br>
-        <div id="status"></div>
-        <br>
-        <div id="number"></div>-->
-        <p class="quoteNum"></p>
-        <p class="quizQs"></p>
-        <p class="topic"></p>
-        <p class="quote"></p>
-      <div class="answer">
-        <form action="">
-          <input type="radio" name="answer" id="badmouth"> BadMouth<br>
-          <input type="radio" name="answer" id="banter"> Banter<br>
-        </form>
-      </div>
-      <div class="counter"></div>
-      <button class="quizButton">Click to start the quiz!</button>
-    <!--<button id="prevQ">Previous Quote</button>-->
-      <button class="nextQ">Next Quote</button>
-      <!-- <p class="status"></p> -->
-      <button class="showResp">Show Responses</button>
-      <br>
-      <a href="home.html"><button>Return to Home Page</button></a>
-      <br>
-      <div id="responses"></div>
+
+        <!-- Navigation bar -->
+        <div id="nav">
+            <ul>
+                <div style="float: left;">
+                  <li><a href="home.html"><button>Home</button></a></li>
+                  <li><a href="resources.html"><button>Resources</button></a><li>
+                </div>
+                <div style="float: right;">
+                    <li>
+                        <a href="profile.html">
+                            <img src="profile.png" width="40" height="auto" style="margin-top: 6px; margin-left: 5px;">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="profile.html">
+                            <button>Profile</button>
+                        </a>
+                    </li>
+                    <li><a href="index.html"><button style="margin-right: 7px;">Logout</button></a></li>
+                </div>
+            </ul>
+        </div>
+
+        <div style="text-align: center;">
+            <br></br>
+            <h1>Toxicity Quiz</h1>
+            <h2>Compare yourself to other players of the toxic behavioral scale.</h2>
+            <!--<br>
+            <button id="start">Start Quiz</button><br>
+            <div id="status"></div>
+            <br>
+            <div id="number"></div>-->
+            <p class="quoteNum"></p>
+            <p class="quizQs"></p>
+            <p class="topic"></p>
+            <p class="quote"></p>
+            <div class="answer">
+              <form action="">
+                <input type="radio" name="answer" id="badmouth"> BadMouth<br>
+                <input type="radio" name="answer" id="banter"> Banter<br>
+              </form>
+            </div>
+            <div class="counter"></div>
+            <button class="quizButton">Click to start the quiz!</button>
+          <!--<button id="prevQ">Previous Quote</button>-->
+            <button class="nextQ">Next Quote</button>
+            <!-- <p class="status"></p> -->
+            <button class="showResp">Show Responses</button>
+            <br>
+            <a href="home.html"><button>Return to Home Page</button></a>
+            <br>
+            <div id="responses"></div>
+        </div>
+
     </body>
     <script src="js_files/jquery-3.3.1.js"></script>
     <script type="application/javascript" src="js_files/quizQuestions.js"></script>

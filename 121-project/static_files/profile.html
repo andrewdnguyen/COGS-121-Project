@@ -6,41 +6,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
     <link href="https://fonts.googleapis.com/css?family=Averia+Sans+Libre|Nunito" rel="stylesheet">
-    <style type="text/css">
-        @import url("primaryCSS.css");
-    </style>
+    <link rel="stylesheet" type="text/css" href="main.css">
 </head>
+
 <body>
-    <h1>My Profile</h1>
-    <img src="profile.png" width="40" height="auto">
-    <h2>Noxious Nate</h2>
-    <ul>
-        <li><b>Toxiscore</b>: 89.3 (89th percentile)</li>
-        <li><b>Previous Toxiscore</b>: 95.0</li>
-        <li><b>Sensitivit</b>y: 3.2 (16th percentile)</li>
-        <li><b>Previous Sensitivity</b>: 3.6</li>
-        <li><b>IGN</b>: NoxNate (LoL), NephariousNate (Fortnite)</li>
-    </ul>
-    <button onclick="edit()">Edit</button>
-    <form id="profileEdit">
-        <p class="editProfile">First name:</p>
-        <input type="text" name="firstname" value="Noxious">
-        <p class="editProfile">Last name:</p>
-        <input type="text" name="lastname" value="Nate">
-        <p class="editProfile">League of Legends IGN:</p>
-        <input type="text" name="ignLol" value="NoxNate">
-        <p class="editProfile">Fortnite IGN:</p>
-        <input type="text" name="ignFortnite" value="NephariousNate">
-        <p class="editProfile">Overwatch IGN:</p>
-        <input type="text" name="ignOW" value="">
-        <br>
-        <input type="submit" value="Submit">
-    </form>
-    <br><br>
-    <a href="trend.html"><button>Report History and Behavioral Trend</button></a>
-    <br><br>
-    <a href="home.html"><button>Home</button></a>
-    <a href="index.html"><button>Logout</button></a>
+
+    <!-- Navigation bar -->
+    <div id="nav">
+        <ul>
+            <div style="float: left;">
+                <li><a href="home.html"><button>Home</button></a></li>
+                <li><a href="resources.html"><button>Resources</button></a><li>
+            </div>
+            <div style="float: right;">
+                <li>
+                    <a href="profile.html">
+                        <img src="profile.png" width="40" height="auto" style="margin-top: 6px; margin-left: 5px;">
+                    </a>
+                </li>
+                <li>
+                    <a href="profile.html">
+                        <button>Profile</button>
+                    </a>
+                </li>
+                <li><a href="index.html"><button style="margin-right: 7px;">Logout</button></a></li>
+            </div>
+        </ul>
+    </div>
+
+    <div style="text-align: center;">
+        <br></br>
+        <h1>My Profile</h1>
+        <h2>Noxious Nate</h2>
+        <ul>
+            <li><b>Toxiscore</b>: 89.3 (89th percentile)</li>
+            <li><b>Previous Toxiscore</b>: 95.0</li>
+            <li><b>Sensitivit</b>y: 3.2 (16th percentile)</li>
+            <li><b>Previous Sensitivity</b>: 3.6</li>
+            <li><b>IGN</b>: NoxNate (LoL), NephariousNate (Fortnite)</li>
+        </ul>
+        <button onclick="edit()">Edit</button>
+        <form id="profileEdit">
+            <p class="editProfile">First name:</p>
+            <input type="text" name="firstname" value="Noxious">
+            <p class="editProfile">Last name:</p>
+            <input type="text" name="lastname" value="Nate">
+            <p class="editProfile">League of Legends IGN:</p>
+            <input type="text" name="ignLol" value="NoxNate">
+            <p class="editProfile">Fortnite IGN:</p>
+            <input type="text" name="ignFortnite" value="NephariousNate">
+            <p class="editProfile">Overwatch IGN:</p>
+            <input type="text" name="ignOW" value="">
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+        <br><br>
+        <a href="trend.html"><button>History and Behavioral Trend Report</button></a>
+        <br><br>
+
+    </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="application/javascript" src="js_files/quizQuestions.js"></script>

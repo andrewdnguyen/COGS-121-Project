@@ -6,22 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
     <link href="https://fonts.googleapis.com/css?family=Averia+Sans+Libre|Nunito" rel="stylesheet">
-    <style type="text/css">
-        @import url("primaryCSS.css");
-    </style>
+    <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 
 <body>
-    <h1>Time to Analyze your Clip!</h1>
-    <button id="startJob">Start Job</button>
-    <button id="getTranscript">Get Transcription</button>
-    <button id="NLPButton">Analyze Transcription</button>
-    <br></br>
-    <div id="status"></div>
-    <div id="results"></div>
-    <!-- <a href="results.html"><button id="typeTextButton">Analyze Text</button></a> -->
-    <a href="home.html"><button>Return to Home Page></button></a>
-    </p>
+    <!-- Navigation bar -->
+    <div id="nav">
+        <ul>
+            <div style="float: left;">
+                <li><a href="home.html"><button>Home</button></a></li>
+                <li><a href="resources.html"><button>Resources</button></a><li>
+            </div>
+            <div style="float: right;">
+                <li>
+                    <a href="profile.html">
+                        <img src="profile.png" width="40" height="auto" style="margin-top: 6px; margin-left: 5px;">
+                    </a>
+                </li>
+                <li>
+                    <a href="profile.html">
+                        <button>Profile</button>
+                    </a>
+                </li>
+                <li><a href="index.html"><button style="margin-right: 7px;">Logout</button></a></li>
+            </div>
+        </ul>
+    </div>   
+      <div style="text-align: center;">
+      <br></br>
+      <h1>Analyze Audio Clip</h1>
+      <button id="startJob">Start Job</button>
+      <button id="getTranscript">Get Transcription</button>
+      <button id="NLPButton">Analyze Transcription</button>
+      <br></br>
+      <div id="status"></div>
+      <div id="results"></div>
+      <!-- <a href="results.html"><button id="typeTextButton">Analyze Text</button></a> -->
+      <a href="home.html"><button>Return to Home Page</button></a>
+      </p>
+    </div>
 </body>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

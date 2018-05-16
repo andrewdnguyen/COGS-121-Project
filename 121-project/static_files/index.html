@@ -5,24 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
     <link href="https://fonts.googleapis.com/css?family=Averia+Sans+Libre|Nunito" rel="stylesheet">
-    <style type="text/css">
-        @import url("primaryCSS.css");
-    </style>
+    <link rel="stylesheet" type="text/css" href="main.css">
 </head>
-<body>
-    <h1>Welcome to Toxicon*</h1>
+<body style="text-align: center;">
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <h1>Welcome to Toxicon</h1>
     <h2>Test your toxicity!</h2>
-    <p>Upload an audio file of you playing, and we'll give you a toxicity score based on what you say. Or take our quiz, which will not only tell you how toxic you are, but how sensitive you are to others.</p>
     <input placeholder="Username"></input>
     <br>
     <input type="password" placeholder="Password" id="passInput">
     <br>
-    <input type="checkbox" onclick="showPassword()" id="showPass">
-    <label for="showPass">Show Password</label>
-    <br>
-    <a href="home.html"><button>Login</button></a>
-    <button>Make New Account</button>
-    <button>Forgot Password</button>
+    <div style="font-size: 8pt;">
+        <input type="checkbox" onclick="showPassword()" id="showPass">
+        <label for="showPass">Show Password</label>
+        <br>
+        <a href="home.html"><button>Login</button></a>
+        <button>Make New Account</button>
+        <button>Forgot Password</button>
+    </div>
+    <br></br>
+    <p id="description">Upload an audio file of you playing, and we'll give you a toxicity score based on what you say. Or take our quiz, which will not only tell you how toxic you are, but how sensitive you are to others.</p>
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">

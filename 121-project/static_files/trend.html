@@ -6,20 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
     <link href="https://fonts.googleapis.com/css?family=Averia+Sans+Libre|Nunito" rel="stylesheet">
-    <style type="text/css">
-        @import url("primaryCSS.css");
-    </style>
+    <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
-    <h1>Report History</h1>
-    <ul id="reportList">
-    </ul>
 
-    <h2>Behavioral Trend</h2>
-    <p>[PLACEHOLDER - Trend graph here]</p>
+    <!-- Navigation bar -->
+    <div id="nav">
+        <ul>
+            <div style="float: left;">
+                <li><a href="home.html"><button>Home</button></a></li>
+                <li><a href="resources.html"><button>Resources</button></a><li>
+            </div>
+            <div style="float: right;">
+                <li>
+                    <a href="profile.html">
+                        <img src="profile.png" width="40" height="auto" style="margin-top: 6px; margin-left: 5px;">
+                    </a>
+                </li>
+                <li>
+                    <a href="profile.html">
+                        <button>Profile</button>
+                    </a>
+                </li>
+                <li><a href="index.html"><button style="margin-right: 7px;">Logout</button></a></li>
+            </div>
+        </ul>
+    </div>
 
-    <a href="profile.html"><button>Return to Profile</button></a>
-    <a href="home.html"><button>Return to Home Page</button></a>
+    <div style="text-align: center;">
+        <br></br>
+        <h1>Report History</h1>
+        <ul id="reportList">
+        </ul>
+
+        <h2>Behavioral Trend</h2>
+        <p>[PLACEHOLDER - Trend graph here]</p>
+
+        <h2>Recent Results</h2>
+        <a href="results.html"><button>April 21st, 2018</button></a>
+        <br></br>
+
+        <div>
+            <a href="resources.html"><button style="color: #2B8A97;">Get rid of your toxicity</button></a>
+            <a href="profile.html"><button>Return to Profile</button></a>
+            <a href="home.html"><button>Return to Home Page</button></a>
+        </div>
+    </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
 </script>
