@@ -2,7 +2,9 @@
 
 ## UI Improvements
 
-Our UI has improved both visually and functionally. The backend is all hooked up, presenting data for our 
+Our UI has improved both visually and functionally. The backend is all hooked up and shows 2 new user actions on top of our original text-input emotional analysis from last milestone. Visually, we chose a color palette and revamped some text and the structure so it's clear where to go. Next iteration, we'll have data visualizations and a more modern, sleek look.
+
+![](/m5-screenshots/home-page.png)
 
 ## User Action 1
 
