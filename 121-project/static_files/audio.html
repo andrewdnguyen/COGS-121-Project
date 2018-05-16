@@ -99,6 +99,7 @@
               type: 'GET',
               error: function(){
                 console.log('Failed to encode');
+                $("#status").html('Failed to encode, you haven\'t uploaded an audio file!');
               },
               success: (data) => {
                 console.log('Successfully submitted text!');
