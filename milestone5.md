@@ -16,3 +16,6 @@ The quiz assesses the person's ability to correctly identify banter quotes from 
 ## User Action 2
 
 The speech-to-text aspect of the app is now functional. Users can upload audio clips (albeit short and no background noise) to our application, which will output a transcription. This transcription will be used to analyze it's toxicity score. It's similar to our last notable user action, which was inputting text to get it's emotional analysis. We decided to leave both in for a more accessible range of options. It's an improvement from the last milestone because this was not a complete user action before, and the speech-to-text API was not accepting audio nor outputting information to the frontend - it only took audio clips that were already hard coded into the project. Now, our server can handle audio transcription too.
+
+![](/m5-screenshots/get_transcription.png)
+![](/m5-screenshots/analyze-audio.png)
