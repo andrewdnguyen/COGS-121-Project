@@ -190,7 +190,13 @@ app.post('/upload',function(req,res){
             if (error)
               console.log('Error:', error);
             else
-              var string = (JSON.stringify(job.results[0].results[0].alternatives[0].transcript, null, 2)); //Clean data to only show transcript
+              console.log(JSON.stringify(job.results[0].results[1]))
+              let string = "";
+              for (var x in job.results[0].results){
+              let data = JSON.stringify(job.results[0].results[x].alternatives[0].transcript, null, 2)
+              let noquotes = data.slice(1, -1);
+              string += " " + noquotes; //Clean data to only show transcript
+              }
               console.log(string);
               db.run(
                 'INSERT INTO transcripts VALUES ($transcript)', //Insert transcript into the Transcripts table in data.db
