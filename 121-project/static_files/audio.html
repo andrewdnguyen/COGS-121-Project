@@ -119,7 +119,7 @@
                 },
                 success: (data) => {
                   console.log('Transcription complete');
-                  $("#status").html('Transcription: ' + data);
+                  $("#status").html('"' + data + '"');
                   $("#NLPButton").show();
                 }
               });

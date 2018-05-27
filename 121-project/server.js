@@ -177,47 +177,59 @@ app.post('/upload',function(req,res){
 
   app.get('/transcribe', (req, res) => {
       speech_to_text.checkJobs(null, function(error, jobs) { //Generates the list of all jobs created so far
-        if (error)
+        if (error){
           console.log('Error:', error);
-        else
+        }
+        else{
           console.log('No problems!')
           console.log(JSON.stringify(jobs, null, 2));
           let idVal = jobs.recognitions[0].id; //Extracts id from specific job info
           let params2 = {};
           params2['id'] = idVal;
           console.log(params2);
-          speech_to_text.checkJob(params2, function(error, job) { //Usus prior job id to get transcript from job
-            if (error)
+          speech_to_text.checkJob(params2, function(error, job) { //Uses prior job id to get transcript from job
+            if (error){
               console.log('Error:', error);
-            else
-              console.log(JSON.stringify(job.results[0].results[1]))
-              let string = "";
-              for (var x in job.results[0].results){
-              let data = JSON.stringify(job.results[0].results[x].alternatives[0].transcript, null, 2)
-              let noquotes = data.slice(1, -1);
-              string += " " + noquotes; //Clean data to only show transcript
-              }
-              console.log(string);
-              db.run(
-                'INSERT INTO transcripts VALUES ($transcript)', //Insert transcript into the Transcripts table in data.db
-                // parameters to SQL query:
-                {
-                  $transcript: string
-                },
-                db.each("SELECT transcript FROM transcripts", (err, row) => { //Prints transcripts table for debugging
-                    console.log("Inserted: " + row.transcript);
-                }));
+              res.send({message: 'Could not transcribe audio. Your audio may still be processing, please wait and try again in a few minutes.'});
+            }
+            else{
+              try{
+                console.log(JSON.stringify(job.results[0].results[1]));
+                let string = "";
+                for (var x in job.results[0].results){
+                let data = JSON.stringify(job.results[0].results[x].alternatives[0].transcript, null, 2)
+                let noquotes = data.slice(1, -1);
+                string += " " + noquotes; //Clean data to only show transcript
+                }
+                console.log(string);
+                db.run(
+                  'INSERT INTO transcripts VALUES ($transcript)', //Insert transcript into the Transcripts table in data.db
+                  // parameters to SQL query:
+                  {
+                    $transcript: string
+                  },
+                  db.each("SELECT transcript FROM transcripts", (err, row) => { //Prints transcripts table for debugging
+                      console.log("Inserted: " + row.transcript);
+                  }));
 
-              var fs = require('fs'); //fs is used to write transcript to file
-              fs.writeFile("test.txt", string, function(err) {
-              if(err) {
-                  return console.log(err);
+                var fs = require('fs'); //fs is used to write transcript to file
+                fs.writeFile("test.txt", string, function(err) {
+                if(err) {
+                    console.log(err);
+                    res.send({message: 'Could not transcribe audio. Your audio may still be processing, please wait and try again in a few minutes.'});
+                }
+                res.send(string);
+              });
               }
-              res.send(string);
-            });
-          });
+              catch(error){
+                console.log("BIG ERROR");
+                res.send('Could not transcribe audio. Your audio may still be processing, please wait and try again in a few minutes.');
+              }
+          }
         });
-      });
+      }
+    });
+  });
 
 
     /**
