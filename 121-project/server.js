@@ -26,6 +26,11 @@ var upload = require('express-fileupload');
 const sqlite3 = require('sqlite3');
 const db = new sqlite3.Database('data.db');
 
+/*Use the plotly.js library to also interact with SQLite databases
+  for data visualization purposes.
+const plotly = require('plotly')("WaynePhung", "xWDjYwyXHSlfG79VjkYK");
+const db2 = new plotly.Database('data2.db');*/
+
 const SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1'); //Import Watson TTS Service
 const fs = require('fs'); //For writing text to files
 const speech_to_text = new SpeechToTextV1 ({ //All necessary api verification data
