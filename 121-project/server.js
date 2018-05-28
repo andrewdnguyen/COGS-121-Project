@@ -7,12 +7,16 @@
 // To start the server, run node server.js in Git Bash
 // and open the frontend webpage at http://localhost:3000/index.html/
 
-//Here's some things you may need to import for the server to work,
-//use the following commands:
-//npm install
-//npm install watson-developer-cloud
-//npm install https://github.com/mapbox/node-sqlite3/tarball/master
-//npm install express-fileupload
+/*Here's some things you may need to import for the server to work,
+  use the following commands:
+  npm install
+  npm install watson-developer-cloud
+  npm install https://github.com/mapbox/node-sqlite3/tarball/master
+  npm install express-fileupload
+  git clone https://github.com/plotly/plotly.js.git
+  npm install plotly.js
+  npm install plotly
+  */
 
 //To load database use node database.js
 //Run server with node server.js
