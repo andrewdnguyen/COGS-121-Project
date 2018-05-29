@@ -251,3 +251,16 @@ form, #topic{
 	height: 50%;
 	text-align: center;
 }
+
+/*Applies to the body for index.html.*/
+/* body {
+	text-align: center;
+} */
+/*Applies to the buttons shown in index.html.*/
+#signIn{
+	display: inline-block;
+}
+
+.g-signin2{
+	margin-left: 22.5%;
+}

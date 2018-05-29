@@ -307,17 +307,6 @@ function randQuote(number, count) {
 
 }
 
-/*This function would be used to toggle the visibility
-  of text at the login page of index.html.*/
-function showPassword() {
-    var password = document.getElementById("passInput");
-    if (password.type === "password") {
-        password.type = "text";
-    } else {
-        password.type = "password";
-    }
-}
-
 /*This function would be used to toggle the ability
   for the user to click on the "Next Quote" button.*/
 function nextQuoteButton(boolean){
