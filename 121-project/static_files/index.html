@@ -28,53 +28,54 @@
         <a href="home.html"><button>Login</button></a>
         <button>Make New Account</button>
         <button>Forgot Password</button>
-        <a href="home.html"><div class="g-signin2" data-width="200" data-height="40" data-longtitle="true" data-onsuccess="onSignIn"></div></a>
-        <a href="index.html"><button id="SignOut" onclick="signOut();">Sign Out</button></a>
+        <a href="home.html"><div class="g-signin2" data-width="200" data-height="40" data-longtitle="true"></div></a>
+        <a href="index.html"><button id="SignOut" onclick="signOut();">Sign Out from Google</button></a>
     </div>
     <br></br>
     <p id="description">Upload an audio file of you playing, and we'll give you a toxicity score based on what you say. Or take our quiz, which will not only tell you how toxic you are, but how sensitive you are to others.</p>
 
 </body>
 <script>
-    function onSignIn(googleUser) {
-      var profile = googleUser.getBasicProfile();
-      console.log('ID: ' + profile.getId());
-      console.log('Name: ' + profile.getName());
-      console.log('Image URL: ' + profile.getImageUrl());
-      console.log('Email: ' + profile.getEmail());
-      var id_token = googleUser.getAuthResponse().id_token;
-    }
-    function onSuccess(googleUser) {
-      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-    }
-    function onFailure(error) {
-      console.log(error);
-    }
-    function signOut() {
-      var auth2 = gapi.auth2.getAuthInstance();
-      auth2.signOut().then(function () {
-        console.log('User signed out.');
-      });
-    }
-    function onLoad() {
+    // function onSignIn(googleUser) {
+    //   var profile = googleUser.getBasicProfile();
+    //   console.log('ID: ' + profile.getId());
+    //   console.log('Name: ' + profile.getName());
+    //   console.log('Image URL: ' + profile.getImageUrl());
+    //   console.log('Email: ' + profile.getEmail());
+    //   var id_token = googleUser.getAuthResponse().id_token;
+    //   //window.location="http://localhost:3000/home.html";
+    // }
+    // function onSuccess(googleUser) {
+    //   console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+    // }
+    // function onFailure(error) {
+    //   console.log(error);
+    // }
+    function init() {
       gapi.load('auth2', function() {
-        gapi.auth2.init();
-      });
-    }
-
-    var googleUser = {};
-    var startApp = function() {
-      gapi.load('auth2', function(){
-        // Retrieve the singleton for the GoogleAuth library and set up the client.
-        auth2 = gapi.auth2.init({
-          client_id: 'YOUR_CLIENT_ID.apps.googleusercontent.com',
-          cookiepolicy: 'single_host_origin',
-          // Request scopes in addition to 'profile' and 'email'
-          //scope: 'additional_scope'
+        gapi.auth2.getAuthInstance({
+          apiKey: 'AIzaSyAMR0Wj2ZRzX1k--ioZV_nxIt_bO5DaLFY',
+          clientId: '180518226106-btugctlhvrq5u3argos1st6jb7b2c05g.apps.googleusercontent.com',
+          fetch_basic_profile: false,
+          scope: 'profile email',
+          ux_mode: 'redirect',
+          redirect_uri: 'http://localhost:3000/home.html'
         });
-        attachSignin(document.getElementById('customBtn'));
-      });
-    };
+      }
+    )}
+
+    // var googleUser = {};
+    // var startApp = function() {
+    //   gapi.load('auth2', function(){
+    //     // Retrieve the singleton for the GoogleAuth library and set up the client.
+    //     auth2 = gapi.auth2.init({
+    //       client_id: '180518226106-btugctlhvrq5u3argos1st6jb7b2c05g.apps.googleusercontent.com',
+    //       cookiepolicy: 'single_host_origin',
+    //       // Request scopes in addition to 'profile' and 'email'
+    //       //scope: 'additional_scope'
+    //     });
+    //     attachSignin(document.getElementById('customBtn'));
+    //   });
 
     function attachSignin(element) {
       console.log(element.id);
@@ -87,8 +88,7 @@
           });
     }
 </script>
-<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
-<script src="https://apis.google.com/js/platform.js?onload=start" async defer></script>
+<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="application/javascript" src="js_files/login.js"></script>
 </html>
