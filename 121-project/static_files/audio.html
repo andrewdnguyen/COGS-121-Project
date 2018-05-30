@@ -7,6 +7,8 @@
     <title>Login</title>
     <link href="https://fonts.googleapis.com/css?family=Averia+Sans+Libre|Nunito" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
 </head>
 
 <body>
@@ -47,6 +49,7 @@
       <div id="status"></div>
       <div id="results"></div>
       <!-- <a href="results.html"><button id="typeTextButton">Analyze Text</button></a> -->
+      <div id="emotionPie"></div>
       <a href="home.html"><button>Return to Home Page</button></a>
       </p>
     </div>
@@ -70,6 +73,7 @@
                 //console.log(data.transcript);
                 $('#results').append((JSON.stringify(data.transcript, null, 2)));
                 console.log((JSON.stringify(data.transcript, null, 2)));
+                var total, sad_percent, joy_percent, disgust_percent, fear_percent, anger_percent;
                 for(let key in data){
                   if(key == "sentiment"){
                     $('#results').append('<div class="data"><h2>' +  "Sentiment" +'</h2></div>');
@@ -77,14 +81,37 @@
                       $('#results').append('<div class="data"><h4>' + 'Label: ' + data.sentiment.document.label +'</h4></div>');
                   }
                   if(key == "emotion"){
-                    $('#results').append('<div class="data"><h2>' + "Emotion" +'</h2></div>');
+                      $('#results').append('<div class="data"><h2>' + "Emotion" +'</h2></div>');
                       $('#results').append('<div class="data"><h4>' + 'Sadness: ' + data.emotion.document.emotion.sadness +'</h4></div>');
-                        $('#results').append('<div class="data"><h4>' + 'Joy: ' + data.emotion.document.emotion.joy +'</h4></div>');
-                          $('#results').append('<div class="data"><h4>' + 'Disgust: ' + data.emotion.document.emotion.disgust +'</h4></div>');
-                            $('#results').append('<div class="data"><h4>' + 'Fear: ' + data.emotion.document.emotion.fear +'</h4></div>');
-                              $('#results').append('<div class="data"><h4>' + 'Anger: ' + data.emotion.document.emotion.anger +'</h4></div>');
-                            }
+                      $('#results').append('<div class="data"><h4>' + 'Joy: ' + data.emotion.document.emotion.joy +'</h4></div>');
+                      $('#results').append('<div class="data"><h4>' + 'Disgust: ' + data.emotion.document.emotion.disgust +'</h4></div>');
+                      $('#results').append('<div class="data"><h4>' + 'Fear: ' + data.emotion.document.emotion.fear +'</h4></div>');
+                      $('#results').append('<div class="data"><h4>' + 'Anger: ' + data.emotion.document.emotion.anger +'</h4></div>');
+                      total = (data.emotion.document.emotion.sadness + data.emotion.document.emotion.joy + data.emotion.document.emotion.disgust + data.emotion.document.emotion.fear + data.emotion.document.emotion.anger);
+                      sad_percent = (data.emotion.document.emotion.sadness/total);
+                      joy_percent = (data.emotion.document.emotion.joy/total);
+                      disgust_percent = (data.emotion.document.emotion.disgust/total);
+                      fear_percent = (data.emotion.document.emotion.fear/total);
+                      anger_percent = (data.emotion.document.emotion.anger/total);
                     }
+                  }
+                  var data = [{
+                    values: [sad_percent, joy_percent, disgust_percent, fear_percent, anger_percent],
+                    labels: ['Sadness', 'Joy', 'Disgust', 'Fear', 'Anger'],
+                    type: 'pie'
+                  }];
+
+                  var layout= {
+                    plot_bgcolor:"rgba(0,0,0,0)",
+                    paper_bgcolor:"rgba(0,0,0,0)",
+                    font: {
+                      family: "FiraSans-Regular",
+                      size: 18,
+                      color: "white"
+                    }
+                  }
+
+                  Plotly.newPlot('emotionPie', data, layout);
                   }
                 })
               });
@@ -124,6 +151,8 @@
                 }
               });
             });
+
+
 
         /*Old code to get specific item - not working, will use later
         $('#getTextButton').click(() => {
