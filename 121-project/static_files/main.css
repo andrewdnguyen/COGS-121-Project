@@ -264,3 +264,18 @@ form, #topic{
 .g-signin2{
 	margin-left: 22.5%;
 }
+
+#typeTextBox{
+	overflow: auto;
+	width: 80%;
+	height: 300px;
+	font-family: FiraSans-Regular;
+	font-size: 24px;
+	color: white;
+	background-color: rgba(0, 0, 0, 0.25);
+	resize: none;
+}
+
+p.quote{
+	font-size: 36px;
+}
