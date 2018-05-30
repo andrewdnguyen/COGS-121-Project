@@ -70,10 +70,11 @@ $(document).ready(() => {
     quizButton.click( function(){
         toggleQuiz();
         if (quizButton.text() == 'Click to start the quiz!'){
-            graph.hide();
             quizQuotes.show();
             $('.counter').hide();
             showResp.hide();
+        } else if (quizButton.text() == 'Take the quiz again!'){
+            console.log()(quizButton.text());
         } else {
             number = 0;
             counter = 0;
@@ -184,29 +185,12 @@ $(document).ready(() => {
             //prevQuotes.hide();
             nextQuotes.hide();
             answer.hide();
-            showResp.text('Show Responses');
             showResp.show();
             $('.counter').text('You have finished the quiz! You answered ' + counter + ' quotes correctly!');
             quizButton.text('Take the quiz again!');
             let percentage = (counter/10)*100 + '%'
-            $('.counter').append('<p class="percentage"> You got ' + percentage + ' correct guesses compared to the average of 80% correct.</p>');
-            $('.percentage').hide();
+            responses.prepend('<p> You got ' + percentage + ' correct guesses compared to the average of 80% correct.</p>');
             console.log('You have finished the quiz! You answered ' + counter + ' quotes correctly!');
-            var data = [{
-              x: ['Your score', 'Average Score of Others', 'Maximum Score'],
-              y: [counter, 8, 10],
-              type: 'bar'
-            }];
-            var layout= {
-              plot_bgcolor:"rgba(0,0,0,0)",
-              paper_bgcolor:"rgba(0,0,0,0)",
-              font: {
-                family: "FiraSans-Regular",
-                size: 12,
-                color: "white"
-              }
-            }
-            Plotly.newPlot('graph', data, layout);
             number = 0;
             counter = 0;
             count = 1;
@@ -224,7 +208,6 @@ $(document).ready(() => {
         responses.toggle();
         graph.toggle();
         showResp.text(showResp.text() == 'Show Responses' ? 'Hide Responses' : 'Show Responses');
-        $('.percentage').toggle();
     });
 });
 
@@ -295,11 +278,11 @@ function randQuote(number, count) {
     topic.show();
     //prevQuotes.show();
     nextQuotes.show();
+    const requestURL = 'quizQ/' + number;
+    console.log('making ajax request to:', requestURL);
     if (number == undefined){
         number = 1;
     }
-    const requestURL = 'quizQ/' + number;
-    console.log('making ajax request to:', requestURL);
     $.ajax({
       // all URLs are relative to http://localhost:3000/
       url: requestURL,

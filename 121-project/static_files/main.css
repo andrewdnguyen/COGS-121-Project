@@ -182,7 +182,6 @@ li{
 form, #topic{
     font-family: FiraSans-Regular;
 }
-/*End of CSS for quiz.html*/
 
 /*Only relevant to upload.html.*/
 .data, .key{
@@ -245,6 +244,12 @@ form, #topic{
 	margin-right: 5%;
 }
 
+/*Applies to body margins on general text for quiz.html.*/
+.bodyText{
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
 /*Applies to the graph element in quiz.html.*/
 #graph{
 	width: 100%;
@@ -252,17 +257,36 @@ form, #topic{
 	text-align: center;
 }
 
-/*Applies to the body for index.html.*/
-/* body {
-	text-align: center;
-} */
-/*Applies to the buttons shown in index.html.*/
+/*The following applies to the radio buttons and text on quiz.html.*/
+.answer{
+	vertical-align: center;
+}
+
+input[type="radio"]{
+	width: 1.1em;
+	height: 1.1em;
+}
+
+.choice{
+	font-size: 30px;
+}
+
+#graph{
+	width: 600px;
+	height: auto;
+	margin-left: 25%;
+	margin-right: 25%;
+}
+
+/*Applies to both the Sign-In and Google Sign-In buttons shown in index.html.*/
 #signIn{
 	display: inline-block;
 }
 
 .g-signin2{
-	margin-left: 22.5%;
+	margin-left: 32.5%;
+	margin-right: 32.5%;
+	font-size: 8px;
 }
 
 #typeTextBox{
@@ -278,4 +302,24 @@ form, #topic{
 
 p.quote{
 	font-size: 36px;
+}
+
+/*This shifts the margin top of general body text when the
+  width of the screen is at most 437 px.*/
+@media screen and (max-width: 425px) {
+	.bodyText{
+		margin-top: 20%;
+	}
+}
+
+@media screen and (max-width: 240px) {
+	.bodyText{
+		margin-top: 35%;
+	}
+}
+
+@media screen and (max-width: 211px) {
+	.bodyText{
+		margin-top: 90%;
+	}
 }

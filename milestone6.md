@@ -36,3 +36,9 @@ We generated this using Plotly.js because of how simple it was to implement. The
   - 0.76/1.5 = 0.5 -> 50%
 - On pie chart, Anger makes up 50% of it
 - Now the user knows that the majority of the transcript was angry.
+
+As for quiz.html, at first we thought we could only fake the data visualization part for the results. But, as it turns out, implementing the bar chart was as simple as the emotion pie chart demonstrated. There is an accurate representation of the number of responses shown relative to the average score of other users (which we have arbitrarily set to 8).
+
+![](/m6-screenshots/quiz-results-visualization.png)
+
+There really is not much math involved, just using the number of correct responses as data for the bar chart and some simple numerical conversions to percentage.
