@@ -38,8 +38,8 @@ const db2 = new plotly.Database('data2.db');*/
 const SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1'); //Import Watson TTS Service
 const fs = require('fs'); //For writing text to files
 const speech_to_text = new SpeechToTextV1 ({ //All necessary api verification data
-  username: 'c51d6149-2c60-41d7-ae78-4e824772aa0a',
-  password: 'M3auuesFSoXu',
+  username: '9df8919f-7841-498a-9237-a194deff1691',
+  password: 'bSEaeNwCoYXl',
   headers: {
   'X-Watson-Learning-Opt-Out': 'true'
   }
