@@ -2,7 +2,7 @@
 
 ## UI Improvements
 
-Our UI, in terms of HTML and CSS is relatively the same as it was before. We made some minor changes to it, however, in order to improve on the user experience. One change we made, for example, was changing the text input box into a text area as to allow for larger text inputs to be read and scrolled through. 
+Our UI in terms of HTML and CSS is relatively the same as it was before. We made some minor changes to it, however, in order to improve on the user experience. For exmaple, we changed the text input box into a text area as to allow for larger text inputs to be read and scrolled through. 
 
 ![](/m6-screenshots/larger-text-area.png)
 
