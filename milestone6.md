@@ -6,12 +6,13 @@ Our UI, in terms of HTML and CSS is relatively the same as it was before. We mad
 
 ## Data Visualization
 
+We originally thought of just implementing bar charts, visualizing an emotion's relevancy score out of 10 with a full bar being 10. However, a relevance score is an unintuitive way to understand the data. The user wants to understand how much of a particular emotion makes up their speech. By creating a visual pie chart, we show more prevalent emotions with larger sections. This way, the user easily understands the emotional makeup of their words.
+
 ![](/m6-screenshots/emotion-pie-chart.png)
 
-Show percent score out of total
-E.g.:
-- all emotions get total score of 1.5
-- sadness is 0.76 out of 1.5 = 0.5 -> 50%
-- on pie chart, they show up as 50%
-- now you know that the majority of the transcript was sad, instead 
-  of trying to understand relevance scores
+We generated this using Plotly.js because of how simple it was to implement. Then we did some simple math, which goes like this:
+- Add up all relevance scores to get a total score (e.g. 1.5)
+- Anger has a relevancy score of 0.76, so divide it by the total
+  - 0.76/1.5 = 0.5 -> 50%
+- On pie chart, Anger makes up 50% of it
+- Now the user knows that the majority of the transcript was angry.
