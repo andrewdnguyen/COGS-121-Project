@@ -22,7 +22,13 @@ Other than that we made a few minor additions including a Google login button wh
 
 We originally thought of just implementing bar charts, visualizing an emotion's relevancy score out of 10 with a full bar being 10. However, a relevance score is an unintuitive way to understand the data. The user wants to understand how much of a particular emotion makes up their speech. By creating a visual pie chart, we show more prevalent emotions with larger sections. This way, the user easily understands the emotional makeup of their words.
 
+Audio Input (large mp3 file)
+
 ![](/m6-screenshots/emotion-pie-chart.png)
+
+Text Input ("I love oranges")
+
+![](/m6-screenshots/text-visualization.png)
 
 We generated this using Plotly.js because of how simple it was to implement. Then we did some simple math, which goes like this:
 - Add up all relevance scores to get a total score (e.g. 1.5)
