@@ -10,9 +10,13 @@ Another change we made was to enlarge some of the text in our quiz, which we fou
 
 ![](/m6-screenshots/larger-text-quiz.png)
 
+We also implemented a Resources tab last week and added a bit to it. Here, users can find ways to improve their behavior and become less toxic.
+
+![](/m6-screenshots/resources.png)
+
 Other than that we made a few minor additions including a Google login button which we may utilize and implement in the future. We decided to get rid of our "Login" and "Make Account" buttons after reviewing the security slides - it's better to use Google's system instead. Other than that the rest of our changes were made in regards to data visualization and displaying the data which we were receiving from the IBM Watson Natural Language Understanding API.
 
-![](/m6-screenshots/implemented-google-login.png)
+![](/m6-screenshots/google-sign-in.png)
 
 ## Data Visualization
 
