@@ -1,3 +1,8 @@
+<!-- This is the page that extracts the entire text that the user inputs in the text box.
+     Then, the text would be analyzed and results would be shown, detailing sentiment
+     scores and coefficients of specific emotions that indicate what emotion the text
+     is most aligned to. This functionality is similar to audio.html, except that this
+     would only take inputted text and not a whole audio file.-->
  <!DOCTYPE html>
 <html>
 <head>
@@ -34,8 +39,9 @@
             </div>
         </ul>
     </div>
-
     <br></br>
+
+    <!-- Body -->
     <div style="text-align: center;">
           <br></br><br></br>
           <h1>Type what you said</h1>
@@ -61,6 +67,10 @@
 <script type="text/javascript">
     $(document).ready(() => {
         $('#getTextButton').click(() => {
+        /* This ajax call will add more elements in the existing page, showing the data
+           and updating the page of what data the Text-to-Speech API backend has pulled
+           from analyzing the text. Additionally, there is data visualization of the
+           results returned, in the form of a pie chart.*/
             $.ajax({
               url: 'text',
               type: 'GET',
@@ -95,6 +105,8 @@
                       }
                   }
 
+              // This is where the data from the backend is being displayed, under Plotly's
+              // pie chart.
                   var data = [{
                     values: [sad_percent, joy_percent, disgust_percent, fear_percent, anger_percent],
                     labels: ['Sadness', 'Joy', 'Disgust', 'Fear', 'Anger'],

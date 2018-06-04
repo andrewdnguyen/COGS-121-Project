@@ -2,20 +2,20 @@
 // run this once to create the initial database as the data.db file
 // node database.js
 
-// to clear the database, simply delete the data.db file and reinitialize the database
+// To clear the database, simply delete the data.db file and reinitialize the database
 
 const sqlite3 = require('sqlite3');
 const db = new sqlite3.Database('data.db');
 
-//Code that creates all of the necessary tables for storing our data
+//Code that creates all of the necessary tables for storing our data.
 db.serialize(() => {
-  // create a new database table:
+  // Create a new database table:
   db.run("CREATE TABLE questions_to_contexts (idx TEXT, number TEXT, content TEXT, topic TEXT, badmouth TEXT, banter TEXT)");
   db.run("CREATE TABLE transcripts (transcript TEXT)");
   db.run("CREATE TABLE words_said_to_text (words TEXT)");
   db.run("CREATE TABLE audio (audiofiles TEXT)");
 
-  // populates the questions_to_contexts table with questions to use for the quiz
+  // Populates the questions_to_contexts table with questions to use for the quiz.
   db.run("INSERT INTO questions_to_contexts VALUES ('1', '1', 'You are a trash jungler.', 'disappointment', 'true', 'false')");
   db.run("INSERT INTO questions_to_contexts VALUES ('2', '2', 'Your brain must be a pea.', 'profanity', 'true', 'false')");
   db.run("INSERT INTO questions_to_contexts VALUES ('3', '3', 'Lol, just concede piece of garbage.', 'belittling', 'true', 'false')");
@@ -29,7 +29,7 @@ db.serialize(() => {
 
   console.log('successfully created the questions_to_contexts table in data.db');
 
-  // print tables out to confirm their contents:
+  // Print tables out to confirm their contents:
   db.each("SELECT idx, number, content, topic, badmouth, banter FROM questions_to_contexts", (err, row) => {
       console.log(row.idx + ": " + row.number + ' - ' + row.content + ' - ' + row.topic + ' - ' + row.badmouth + ' - ' + row.banter);
   });

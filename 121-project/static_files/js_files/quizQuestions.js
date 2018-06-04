@@ -2,7 +2,9 @@
     Purpose: This is a javascript file, meant to serve various functions
     for the quiz.html webpage. This document ensures that the essential
     interactions within the buttons and responses from the user are
-    collected to provide scores and reviews of their response.
+    collected to provide scores and reviews of their response. A data
+    visualization bar chart is provided after the user fully completes
+    the quiz.
 */
 
 "use strict"; /*Forces variable declaration syntax to be included.*/
@@ -340,6 +342,9 @@ function nextQuoteButton(boolean){
         $(".nextQ").prop("disabled",true);
     }
 }
+
+//End of file. All deprecated code continues from here.
+
 
 /*$(document).ready(() => {
   $('#startQuiz').click(() => {
