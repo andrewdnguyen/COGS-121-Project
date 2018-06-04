@@ -25,40 +25,63 @@
 <li></li>
 
 ## Source Code Files
-<li>server.js</li>
 
-<li>database.js</li>
+### The Server File
+#### server.js
 
-<li>login.js</li>
+This file is where most if not all of our backend code lies.
+Most of our site interactions with outside APIs occur here as well
+as the code for starting the server.
 
-<li>quizQuestions.js</li>
+### The Database File
+#### database.js
 
-<li>audio.html</li>
+This file contains the SQL code that generates a data.db file that acts as the SQLite database which stores primarily text information for use on our server.
 
-<li>home.html</li>
+### Login JavaScript File
+#### login.js
 
-<li>index.html</li>
+### Quiz JavaScript File
+#### quizQuestions.js
 
-<li>main.css</li>
+### Audio Upload Page
+#### audio.html
+This is the page for users to upload any audio of their in-game interactions for emotional analysis. This page holds the front-end for a combination of our file upload, speech-to-text, and natural language understanding code. By interacting with the page, users can view a transcript of what they said in their audio clip as well as the returned analysis displayed both in text and in a pie chart form.
+
+### Home Page
+#### home.html
+
+### Login Page
+#### index.html
+
+### CSS Page
+#### main.css
+
 Style sheet for every page.
 Used to improve visuals, visibility, and usability.
 
-<li>profile.html</li>
+### Profile Page
+#### profile.html
 
-<li>quiz.html</li>
 
-<li>resources.html</li>
-Resources Page
+### Quiz Page
+#### quiz.html
+
+
+### Resources Page
+#### resources.html
 
 A basic compilation of resources for toxic people to look over and
 improve their behavior. Currently fairly sparse, but it's a start.
 Ideally we would recommend resources based on their score level
 and games they play.
 
-<li>results.html</li>
+### Results Page
+#### results.html
 
-<li>trend.html</li>
-Trend / Report History Page
+
+### Trend / Report History Page
+#### trend.html
 
 Ideally, the user's data would show up on this page so they
 can review their past evaluations - has their toxicity gone down?
@@ -68,8 +91,8 @@ scores are especially low compared to the average. We would like
 to eventually use this page to store all information, unique to
 each user, which we started with the Google Sign In.
 
-<li>upload.html</li>
-Text Upload
+### Text Upload Page
+#### upload.html
 
 If the user can't record audio of just themselves playing (or they
 want to rewrite what was shown in the chat log), he or she has the
