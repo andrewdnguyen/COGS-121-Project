@@ -15,7 +15,14 @@
 <li></li>
 
 ## Helen Cheng
-<li></li>
+<li>Implemented functionality for uploading text onto website.</li>
+<li>Wrote code for generating sentiment and emotion breakdown data for transcripts.</li>
+<li>Made some significant UI improvements, such as color theme and formatting.</li>
+<li>Included a navigation bar.</li>
+<li>Implemented Plotly graphs for audio and text emotional results.</li>
+<li>Created POST and GET requests for the initial text upload function.</li>
+<li>Created new database tables for emotional data.</li>
+<li>Did video capture and voice over for demo video.</li>
 
 ## Source Code Files
 <li>server.js</li>
