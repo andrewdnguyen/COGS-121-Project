@@ -58,9 +58,9 @@ This file would be used for the index.html login screen.
 
 This file is used for quiz.html webpage.
 
-This javascript file ensures that the essential interactions within 
-the buttons and responses from the user are collected to provide 
-scores and reviews of their responses. A data visualization bar chart 
+This javascript file ensures that the essential interactions within
+the buttons and responses from the user are collected to provide
+scores and reviews of their responses. A data visualization bar chart
 is provided after the user fully completes the quiz.
 
 ### Audio Upload Page
@@ -94,9 +94,9 @@ Used to improve visuals, visibility, and usability.
 #### profile.html
 
 This is the user's profile page used to store an user's profile information, such as name, in game
-usernames, and scores over time. The user should evaluate their toxicity using the text/audio 
-options or taking a quiz, and the average and most recent should show up here. Unfortunately, 
-this is all currently hard coded, though we finally have Google Sign In working, so hopefully we 
+usernames, and scores over time. The user should evaluate their toxicity using the text/audio
+options or taking a quiz, and the average and most recent should show up here. Unfortunately,
+this is all currently hard coded, though we finally have Google Sign In working, so hopefully we
 can store data for each person through Google.
 
 ### Quiz Page
@@ -121,7 +121,7 @@ and games they play.
 ### Results Page
 #### results.html
 
-This is a static screen, which was meant to show user's current percentile 
+This is a static screen, which was meant to show user's current percentile
 of toxicity, relative to other users/players. This also has a button that
 refers you to external resources to improve the user's toxic behavior...
 or go back to the main menu page.
@@ -147,8 +147,8 @@ not restrained to just uploading audio. We give the same kind of
 results than we would for audio - a sentiment score, emotional score
 for 5 emotions, and a useful pie chart that breaks down how much
 emotion there is in the text relative to each other. The numbers
-indicate relevance - how likely it is between 0 and 1 
-(0 meaning no correlation, 1 meaning high correlation) that the 
+indicate relevance - how likely it is between 0 and 1
+(0 meaning no correlation, 1 meaning high correlation) that the
 words have that emotion.
 
 Because we use AJAX, there are separate buttons to start analyzing
@@ -157,5 +157,5 @@ two buttons in the future, but for now they are simply POST and GET
 requests.
 
 ## Video Link
-####[Video on Google Drive](https://drive.google.com/open?id=16f5NDzJawJQVU32QElWSo6yYatuWwg4t)
-####[Video also on YouTube](https://youtu.be/-sVRyjGzHRE)
+#### [Video on Google Drive](https://drive.google.com/open?id=16f5NDzJawJQVU32QElWSo6yYatuWwg4t)
+#### [Video also on YouTube](https://youtu.be/-sVRyjGzHRE)
