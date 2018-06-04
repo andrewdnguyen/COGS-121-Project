@@ -1,11 +1,30 @@
- <!DOCTYPE html>
+<!-- 
+
+Text Upload
+
+If the user can't record audio of just themselves playing (or they
+want to rewrite what was shown in the chat log), he or she has the
+option to type in those words directly. This way, our users are
+not restrained to just uploading audio. We give the same kind of
+results than we would for audio - a sentiment score, emotional score
+for 5 emotions, and a useful pie chart that breaks down how much
+emotion there is in the text relative to each other. The numbers
+indicate relevance - how likely it is between 0 and 1 (0 meaning no correlation, 1 meaning high correlation) that the words have that emotion.
+
+Because we use AJAX, there are separate buttons to start analyzing
+text and then getting the scores. Ideally we could merge these
+two buttons in the future, but for now they are simply POST and GET
+requests.
+
+-->
+
+<!DOCTYPE html>
 <html>
 <head>
+    <!-- Tab title, main.css import, allow use of Plotly -->
     <title>Choose/Upload</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login</title>
-    <link href="https://fonts.googleapis.com/css?family=Averia+Sans+Libre|Nunito" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="main.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
@@ -35,6 +54,8 @@
         </ul>
     </div>
 
+    <!-- Text Upload - the text input, POST request button (Analyze
+         Text) and GET button (Get Text)-->
     <br></br>
     <div style="text-align: center;">
           <br></br><br></br>
@@ -49,17 +70,21 @@
           <div id="status"></div>
           <div id="results"></div>
           <div id="emotionTextPie"></div>
-          <!-- <a href="results.html"><button id="typeTextButton">Analyze Text</button></a> -->
-          <a href="home.html"><button>Return to Home Page</button></a>
-          </p>
+          <a href="home.html">
+              <button>Return to Home Page</button>
+          </a>
     </div>
 </body>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="application/javascript" src="js_files/quizQuestions.js"></script>
+
+<!-- All scripting to show content upon click and communicate with server.js -->
 <script type="text/javascript">
     $(document).ready(() => {
+
+        /*GET request will append JSON string to HTML div. Calls from the server.js and accesses our sqlite database.*/
         $('#getTextButton').click(() => {
             $.ajax({
               url: 'text',
@@ -73,6 +98,8 @@
                 $('#results').append('<div class="data"><h2>' +  "Text Entered" +'</h2></div>');
                 $('#results').append($('#typeTextBox').val());
                 var total, sad_percent, joy_percent, disgust_percent, fear_percent, anger_percent;
+
+                /*Where all the text is extracted and appended to the HTML div.*/
                 for(let key in data){
                       if(key == "sentiment"){
                         $('#results').append('<div class="data"><h2>' +  "Sentiment" +'</h2></div>');
@@ -86,6 +113,8 @@
                         $('#results').append('<div class="data"><h4>' + 'Disgust: ' + data.emotion.document.emotion.disgust +'</h4></div>');
                         $('#results').append('<div class="data"><h4>' + 'Fear: ' + data.emotion.document.emotion.fear +'</h4></div>');
                         $('#results').append('<div class="data"><h4>' + 'Anger: ' + data.emotion.document.emotion.anger +'</h4></div>');
+
+                        /*Calculates percentage of pie chart for each emotion.*/
                         total = (data.emotion.document.emotion.sadness + data.emotion.document.emotion.joy + data.emotion.document.emotion.disgust + data.emotion.document.emotion.fear + data.emotion.document.emotion.anger);
                         sad_percent = (data.emotion.document.emotion.sadness/total);
                         joy_percent = (data.emotion.document.emotion.joy/total);
@@ -95,6 +124,7 @@
                       }
                   }
 
+                  /*Creates pie chart based on percentages calcualted above, creates custom layout.*/
                   var data = [{
                     values: [sad_percent, joy_percent, disgust_percent, fear_percent, anger_percent],
                     labels: ['Sadness', 'Joy', 'Disgust', 'Fear', 'Anger'],
@@ -117,6 +147,7 @@
           })
         });
 
+        /*POST request will send text to our sqlite database through server.js. Will generate a status once text is sent - either is fails to submit or submits successfully. Status text is appended to the #status HTML div.*/
         $('#typeTextButton').click(() => {
             $.ajax({
               // all URLs are relative to http://localhost:3000/
@@ -139,21 +170,3 @@
         });
 </script>
 </html>
-
-<!--Deprecated code pls ignore-->
-<!-- Commented out as it does not provide to functionality
-<div class="options">
-    <br></br>
-    <h1>Choose a Game</h1>
-    <a href="https://www.epicgames.com/fortnite"><button>Fortnite</button></a>
-    <a href="https://na.leagueoflegends.com/en/"><button>League of Legends</button></a>
-    <a href="https://playoverwatch.com/"><button>Overwatch</button></a>
-</div>
--->
-    <!-- Commented out because of audio.html
-    <br></br><br></br>
-    <form class="fileupload" action="upload" method="post" enctype="multipart/form-data">
-      <h1>Upload Audio Here (Must be .mp3 format!)</h1>
-      <input type="file" name="upfile" value="">
-      <input type="submit" />
-    </form> -->
