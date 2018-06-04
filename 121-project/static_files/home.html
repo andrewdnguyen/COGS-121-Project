@@ -1,3 +1,10 @@
+<!-- Document: home.html
+
+     Purpose: This is the main menu of the Toxicon website, which has the navigation bar.
+     This page shows options for the user to input text for toxicity, upload an audio file
+     for analyzing emotional factors of speech, and even take a quiz to assess the person
+     to correctly identify toxic phrases. -->
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -34,29 +41,41 @@
             </ul>
         </div>
 
+        <!-- Body -->
         <div style="text-align: center;" class="bodyText">
             <br></br>
             <h1>Welcome to Toxicon</h1>
             <h2>Test your toxicity!</h2>
             <div class="options">
+
+            <!-- This option navigates the user towards inputing messages that would be analyzed. -->
                 <div class="text_option">
                     <p>Upload chat messages from  your game.</p>
                     <a href="upload.html"><button>Upload Text</button></a>
                 </div>
                 <br></br>
+
+            <!-- This option navigates the user towards audio files with speech that would be analyzed. -->
                 <div class="audio_option">
                     <p>Send audio of you talking while playing.</p>
                     <a href="audio.html"><button>Send Audio</button></a>
                 </div>
                 <br><br>
+
+            <!-- This option navigates the user towards taking a self-assessing quiz. -->
                 <div class="quiz_option">
                     <p>Start the quiz to determine your toxicity level relative to your responses.</p>
                     <a href="quiz.html"><button>Start Quiz</button></a>
                 </div>
+
             </div>
         </div>
     </body>
     <script type="application/javascript" src="js_files/login.js"></script>
+
+<!-- The following script attempts to navigate the user to the home screen.
+     Oddly enough, this does not manage to actually sign the user out of
+     their Google account completely. -->
     <script>
       function signOut() {
         var auth2 = gapi.auth2.getAuthInstance();

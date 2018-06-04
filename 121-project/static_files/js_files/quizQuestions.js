@@ -1,10 +1,11 @@
 /*  Document: quizQuestions.js
-    Purpose: This is a javascript file, meant to serve various functions
-    for the quiz.html webpage. This document ensures that the essential
-    interactions within the buttons and responses from the user are
-    collected to provide scores and reviews of their response. A data
-    visualization bar chart is provided after the user fully completes
-    the quiz.
+
+    Purpose: This file is used for quiz.html webpage.
+
+    This javascript file ensures that the essential interactions within
+    the buttons and responses from the user are collected to provide
+    scores and reviews of their responses. A data visualization bar chart
+    is provided after the user fully completes the quiz.
 */
 
 "use strict"; /*Forces variable declaration syntax to be included.*/

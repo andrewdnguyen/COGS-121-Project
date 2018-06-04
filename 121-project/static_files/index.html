@@ -1,3 +1,13 @@
+<!-- Document: index.html
+
+     Purpose: This is the main screen that the user would first see.
+              Although the native account login and sign-up functionalities
+              have remained stagnant and unusable, both the login and the
+              Google Sign-In button can be used to sign in (the login
+              button can be redirected for the sake of user testing).
+-->
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,13 +20,20 @@
     <link rel="stylesheet" type="text/css" href="main.css">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
+
+<!-- Home screen body and text. -->
 <body style="text-align: center;" id="c">
     <br></br>
     <br></br>
     <br></br>
     <br></br>
+
+<!-- Welcome title of website: Toxicon. Description is included below. -->
     <h1>Welcome to Toxicon</h1>
     <h2>Test your toxicity!</h2>
+
+<!-- Note that most of the functionalities except the Login and Google sign-in
+    buttons are not usable, except perhaps the password-to-text checkbox. -->
     <input placeholder="Username"></input>
     <br>
     <input type="password" placeholder="Password" id="passInput">
@@ -34,25 +51,15 @@
         <p>If you are already signed in through your Google account, click on the Google button to proceed.</p>
     </div>
     <br></br>
-    <p id="description">Upload an audio file of you playing, and we'll give you a toxicity score based on what you say. Or take our quiz, which will not only tell you how toxic you are, but how sensitive you are to others.</p>
+
+<!-- Brief description of what the website does. -->
+    <p id="description">Upload an audio file of you playing, and we'll give you a toxicity score based on what you say.
+        Or take our quiz, which will not only tell you how toxic you are, but how sensitive you are to others.</p>
 
 </body>
 <script>
-    // function onSignIn(googleUser) {
-    //   var profile = googleUser.getBasicProfile();
-    //   console.log('ID: ' + profile.getId());
-    //   console.log('Name: ' + profile.getName());
-    //   console.log('Image URL: ' + profile.getImageUrl());
-    //   console.log('Email: ' + profile.getEmail());
-    //   var id_token = googleUser.getAuthResponse().id_token;
-    //   //window.location="http://localhost:3000/home.html";
-    // }
-    // function onSuccess(googleUser) {
-    //   console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-    // }
-    // function onFailure(error) {
-    //   console.log(error);
-    // }
+// This is the javascript within the file that authenticates the user if that person
+// successfully logs in through the Google Sign-In button.
     function init() {
       gapi.load('auth2', function() {
         gapi.auth2.getAuthInstance({
@@ -65,19 +72,6 @@
         });
       }
     )}
-
-    // var googleUser = {};
-    // var startApp = function() {
-    //   gapi.load('auth2', function(){
-    //     // Retrieve the singleton for the GoogleAuth library and set up the client.
-    //     auth2 = gapi.auth2.init({
-    //       client_id: '180518226106-btugctlhvrq5u3argos1st6jb7b2c05g.apps.googleusercontent.com',
-    //       cookiepolicy: 'single_host_origin',
-    //       // Request scopes in addition to 'profile' and 'email'
-    //       //scope: 'additional_scope'
-    //     });
-    //     attachSignin(document.getElementById('customBtn'));
-    //   });
 
     function attachSignin(element) {
       console.log(element.id);
