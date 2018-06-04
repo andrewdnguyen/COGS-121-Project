@@ -1,75 +1,43 @@
+/*Style sheet for every page. Please minimize in-line styling and keep things to this sheet.*/
+
+/*FiraSans, more versions in the fonts folder (bold, etc.)*/
 @font-face {
 	font-family: "FiraSans-Regular";
 	src: url("fonts/FiraSans-Regular.otf");
 }
 
+/*Don't delete - keeps things stretched to edges of browser, text white.*/
 html, body {
     color: white;
     margin: 0;
     padding: 0;
 }
 
+/*Color of body and sizing.*/
 body {
     height: 100%;
     background: #202020;
     background-size: 3000%;
-    animation: gradChange 360s ease-in-out infinite;
 }
 
-@keyframes gradChange {
-    0% {
-        background-position: 0% 20%;
-    }
-    10% {
-        background-position: 20% 40%;
-    }
-    20% {
-        background-position: 40% 60%;
-    }
-    30% {
-        background-position: 60% 80%;
-    }
-    40% {
-        background-position: 80% 100%;
-    }
-    50% {
-        background-position: 100% 80%;
-    }name
-    60% {
-        background-position: 80% 60%;
-    }
-    70% {
-        background-position: 60% 40%;
-    }
-    80% {
-        background-position: 40% 20%;
-    }
-    90% {
-        background-position: 20% 0%;
-    }
-    100% {
-        background-position: 0% 0%;
-    }
-}
-
-div {
-    font-family: FiraSans-Regular;
-}
-
+/*Assigning font size AND color to headers.*/
 h1 {
     font-family: FiraSans-Regular;
     color: #48B0A3;
 }
 
-h2, p, input, input[type="checkbox"], label {
+/*Assigning font size to general text.*/
+form, #topic, div, h2, p, input, input[type="checkbox"], label {
     font-family: FiraSans-Regular;
 }
 
+/*Specifically set weight and color for secondary header.*/
 h2 {
     font-weight: bolder;
     color: #77D282;
 }
 
+/*Custom, clear input section.*/
 input {
     background-color: transparent;
     border-color: 1em solid white;
@@ -77,33 +45,35 @@ input {
     margin-top: 0.5em;
 }
 
+/*Change in background color when hovering over input.*/
 input:hover{
     background-color: rgba(0, 0, 0, 0.25);
 }
 
+/*Change in background color when focusing on input.*/
 input:focus {
     background-color: rgba(0, 0, 0, 0.25);
     outline: none;
 }
 
+/*Change in background color when checking off input.*/
 input[type=checkbox] {
     background: transparent;
     transform: scale(1.5);
 }
 
-::placeholder{
-    color: rgba(255,255,255, 0.5);
-}
-
+/*Change margin when checking off or for label.*/
 input[type=checkbox], label {
     margin: 1em 0em 1em 0.25em;
 }
 
+/*Set different font size and border radius for inputs/labels/most text*/
 p, input, label {
     font-size: 1.25em;
     border-radius: 0.25em;
 }
 
+/*Customized style for all buttons and file/submit inputs*/
 button, input[type="file"], input[type="submit"]{
     margin: 0.5em 0em 0.5em 0.5em;
     padding: 0.5em, 1.75em;
@@ -115,39 +85,46 @@ button, input[type="file"], input[type="submit"]{
     border-radius: 0.25em;
 }
 
+/*Change background color upon button hover.*/
 button:hover {
     background-color: rgba(0,0,0,.1);
     cursor: pointer;
 }
 
+/*Change opacity when button is enabled.*/
 button:enabled{
     opacity: 1;
     cursor: pointer;
 }
 
+/*Lower opacity to make it look disabled.*/
 button:disabled{
     opacity: 0.5;
     cursor: default;
 }
 
+/*Custom for home.html for things to do.*/
 .options{
     display: inline-block;
     color: black;
     text-align: center;
 }
 
+/*Custom styling for text option on home page.*/
 .text_option {
 	background-color: #2B8A97;
 	border-radius: 5px;
     padding: 10px;
 }
 
+/*Custom styling for audio option on home page.*/
 .audio_option {
 	background-color: #77D282;
 	border-radius: 5px;
     padding: 10px;
 }
 
+/*Custom styling for quiz option on home page.*/
 .quiz_option {
 	background-color: #CDF26F;
 	border-radius: 5px;
@@ -156,20 +133,14 @@ button:disabled{
     margin-right: 5px;
 }
 
-.outline_option {
-	border-style: solid;
-	border-width: 1px;
-	border-radius: 5px;
-	border-color: white;
-    padding: 10px;
-}
-
+/*Custom styling for edit form on the Profile page.*/
 .editProfile{
     margin: 0.5em 0em 0.25em 0em;
     font-size: 1em;
     font-style: italic;
 }
 
+/*Styling for the navbar (both ul and li).*/
 ul{
     margin-left: -2.5em;
 }
@@ -179,33 +150,32 @@ li{
     font-size: 1.25em;
 }
 
-form, #topic{
-    font-family: FiraSans-Regular;
-}
 
 /*Only relevant to upload.html.*/
 .data, .key{
     font-family: FiraSans-Regular;
 }
-/*End of CSS for upload.html.*/
 
-
+/*Styling for the profile.*/
 #profileEdit {
 	display: none;
 }
 
+/*General center class to be used anywhere.*/
 .center {
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
+/*Styling for landing page description.*/
 #description {
 	width: 800px;
 	margin:0 auto;
 	color: #CDF26F;
 }
 
+/*More nav bar nudging.*/
 #nav {
 	width: 100%;
 	float: left;
@@ -239,6 +209,7 @@ form, #topic{
 	color: #c00;
 }
 
+/*Helps chosen divs (like for nav bar or options on home page) have standard margins.*/
 .indented {
 	margin-left: 5%
 	margin-right: 5%;
@@ -262,15 +233,18 @@ form, #topic{
 	vertical-align: center;
 }
 
+/*Change size of radio input on quiz.*/
 input[type="radio"]{
 	width: 1.1em;
 	height: 1.1em;
 }
 
+/*Increase size of quiz choices for visibility.*/
 .choice{
 	font-size: 30px;
 }
 
+/*Custom styling for quiz graph.*/
 #graph{
 	width: 600px;
 	height: auto;
@@ -283,12 +257,14 @@ input[type="radio"]{
 	display: inline-block;
 }
 
+/*More Google Sign in styling.*/
 .g-signin2{
 	margin-left: 32.5%;
 	margin-right: 32.5%;
 	font-size: 8px;
 }
 
+/*Used for upload.html text input.*/
 #typeTextBox{
 	overflow: auto;
 	width: 80%;
@@ -300,6 +276,7 @@ input[type="radio"]{
 	resize: none;
 }
 
+/*Increase quiz quotes for usability/visibility.*/
 p.quote{
 	font-size: 36px;
 }
