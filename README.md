@@ -20,3 +20,8 @@ To run the app, proceed through the following directions:
   - node database.js
   - node server.js
 4. The app should now be running and can be accessed through your browser at [http://localhost:3000](http://localhost:3000).
+
+## Troubleshooting
+- Note that this version is a demo and therefore the app can be accessed simply by clicking on the login button on the login screen.
+- All audio uploads must be in .mp3 format.
+- If the app fails in any other case it is likely due to the API quota being reached. You will need to create an IBM Watson account and get   a new username and password for the TextToSpeech and NaturalLanguageUnderstanding APIs.
